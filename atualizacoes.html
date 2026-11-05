@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Atualizações · Buddy Editor</title>
+  <meta name="description" content="Tudo o que mudou no Buddy Editor, versão por versão, e o que vem por aí.">
+  <meta name="theme-color" content="#070b16">
+  <meta property="og:title" content="Atualizações · Buddy Editor">
+  <meta property="og:description" content="Tudo o que mudou no Buddy Editor, versão por versão, e o que vem por aí.">
+  <meta property="og:type" content="website">
+  <link rel="icon" type="image/svg+xml" href="buddy_editor_camadas_editavel.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="bg-deco" aria-hidden="true"></div>
+
+  <header class="nav">
+    <div class="wrap nav-inner">
+      <a class="brand" href="index.html" aria-label="Buddy Editor, início">
+        <img src="buddy_editor_camadas_editavel.svg" alt="" width="38" height="33">
+        <span class="brand-text">Buddy Editor<small>para Premiere Pro</small></span>
+      </a>
+      <nav aria-label="Principal">
+        <ul class="nav-links"><li><a href="index.html">Início</a></li><li><a href="funcionalidades.html">Funcionalidades</a></li><li><a href="precos.html">Preços</a></li><li><a href="atualizacoes.html" aria-current="page">Atualizações</a></li></ul>
+      </nav>
+      <div class="nav-cta">
+        <a class="btn btn-ghost btn-sm" href="precos.html">Ver planos</a>
+        <a class="btn btn-primary btn-sm" href="index.html#baixar">Baixar grátis</a>
+        <button class="nav-toggle" aria-label="Abrir menu" aria-expanded="false"><span></span></button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="page-hero">
+      <div class="wrap">
+        <div data-buddy data-size="sm" data-greeting="Olha só o que eu aprendi! 📚"></div>
+        <span class="eyebrow" style="margin-top:16px">Atualizações</span>
+        <h1>O Buddy <span class="hl">não para</span> de aprender</h1>
+        <p class="lead">Tudo o que mudou, versão por versão. O painel avisa sozinho quando sai uma versão nova.</p>
+      </div>
+    </section>
+
+    <!-- ROADMAP -->
+    <section style="padding-top:0">
+      <div class="wrap">
+        <div class="section-head reveal" style="margin-bottom:28px">
+          <span class="eyebrow">Por vir</span>
+          <h2 style="font-size:clamp(1.6rem,3vw,2.2rem)">Próximos passos</h2>
+        </div>
+        <div class="roadmap">
+          <div class="card road next reveal"><span class="road-n">Próximo</span><h3>Buddy Silences</h3><p>Remoção automática de pausas, com suporte a vários microfones.</p></div>
+          <div class="card road reveal"><span class="road-n">Depois</span><h3>Buddy Zoom</h3><p>Punch-ins e zooms suaves automáticos.</p></div>
+          <div class="card road reveal"><span class="road-n">Depois</span><h3>Buddy Profanity</h3><p>IA local (Whisper) para censurar palavras.</p></div>
+          <div class="card road reveal"><span class="road-n">Depois</span><h3>Buddy Angles</h3><p>Troca de ângulos no ritmo para quem grava sozinho.</p></div>
+          <div class="card road reveal"><span class="road-n">Depois</span><h3>Buddy Captions</h3><p>Legendas dinâmicas palavra por palavra.</p></div>
+          <div class="card road reveal"><span class="road-n">No radar</span><h3>macOS</h3><p>Versão para Mac do Premiere Pro.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CHANGELOG -->
+    <section style="padding-top:20px">
+      <div class="wrap">
+        <div class="section-head reveal" style="margin-bottom:36px">
+          <span class="eyebrow">Histórico</span>
+          <h2 style="font-size:clamp(1.6rem,3vw,2.2rem)">Notas de versão</h2>
+        </div>
+
+        <div class="changelog">
+          <div class="release wip reveal">
+            <div class="card">
+              <div class="rel-head"><span class="rel-ver">Em desenvolvimento</span><span class="chip chip-dev">Bastidores</span></div>
+              <h3>Preparando o Buddy para o futuro do Premiere</h3>
+              <ul class="rel-list">
+                <li><span class="tag tag-imp">Melhoria</span>Nova camada interna de plataforma, que separa o Buddy do sistema de extensões atual. Isso prepara o caminho para o novo formato de plugins do Premiere (UXP) e para o macOS.</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="release major reveal">
+            <div class="card">
+              <div class="rel-head"><span class="rel-ver">v1.0.0</span><span class="chip chip-live">Atual</span><span class="rel-date">4 de novembro de 2026</span></div>
+              <h3>Primeira versão pública 🎉</h3>
+              <ul class="rel-list">
+                <li><span class="tag tag-new">Novo</span>Buddy Podcast completo e estável: corte multicâmera automático guiado por quem está falando.</li>
+                <li><span class="tag tag-new">Novo</span>Pacote de instalação pronto para distribuir.</li>
+                <li><span class="tag tag-new">Novo</span>Acesso gratuito a todos os módulos até o sistema de licenças entrar no ar.</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="release reveal">
+            <div class="card">
+              <div class="rel-head"><span class="rel-ver">v0.2.11 – 0.2.12</span><span class="rel-date">4 de novembro de 2026</span></div>
+              <h3>Camadas do seu jeito</h3>
+              <ul class="rel-list">
+                <li><span class="tag tag-new">Novo</span>Modo de camadas <b>Linear</b>: as peças no ar vão para uma nova trilha de vídeo no topo.</li>
+                <li><span class="tag tag-new">Novo</span>Opção de apagar trilhas vazias (vídeo, áudio ou ambas) depois da edição.</li>
+                <li><span class="tag tag-imp">Melhoria</span>Modo <b>Empilhado</b> (câmera exclusiva) virou o padrão: só a câmera no ar fica ligada.</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="release reveal">
+            <div class="card">
+              <div class="rel-head"><span class="rel-ver">v0.2.7 – 0.2.10</span><span class="rel-date">4 de novembro de 2026</span></div>
+              <h3>Menos configuração, mais acerto</h3>
+              <ul class="rel-list">
+                <li><span class="tag tag-imp">Melhoria</span>Fim da etiqueta de "plano geral": uma câmera que mostra várias pessoas agora é simplesmente marcada para todas elas.</li>
+                <li><span class="tag tag-fix">Correção</span>Leitura das trilhas de áudio corrigida em sequências com trilhas extras.</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="release reveal">
+            <div class="card">
+              <div class="rel-head"><span class="rel-ver">v0.2.3 – 0.2.6</span><span class="rel-date">3 de novembro de 2026</span></div>
+              <h3>Cortes mais limpos</h3>
+              <ul class="rel-list">
+                <li><span class="tag tag-imp">Melhoria</span>Cada troca corta só a câmera que sai e a que entra. Cortes no áudio viraram opcionais.</li>
+                <li><span class="tag tag-imp">Melhoria</span>Áudio e vídeo são desvinculados antes de cortar, por padrão.</li>
+                <li><span class="tag tag-imp">Melhoria</span>Arquivos com várias faixas de áudio são lidos exatamente como no Premiere, e o seletor de canal foi para os ajustes finos.</li>
+                <li><span class="tag tag-new">Novo</span>Empilhamento com o plano geral ao fundo.</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="release reveal">
+            <div class="card">
+              <div class="rel-head"><span class="rel-ver">v0.2.1 – 0.2.2</span><span class="rel-date">3 de novembro de 2026</span></div>
+              <h3>Canais automáticos</h3>
+              <ul class="rel-list">
+                <li><span class="tag tag-new">Novo</span>Canal automático por padrão: o Buddy descobre sozinho qual canal é de cada microfone.</li>
+                <li><span class="tag tag-fix">Correção</span>Mics recebendo o mesmo áudio? Agora se resolve com um clique.</li>
+                <li><span class="tag tag-imp">Melhoria</span>Número da versão visível na barra de status do painel.</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="release reveal">
+            <div class="card">
+              <div class="rel-head"><span class="rel-ver">v0.2.0</span><span class="rel-date">3 de novembro de 2026</span></div>
+              <h3>Nasce o Buddy Podcast 🎙️</h3>
+              <ul class="rel-list">
+                <li><span class="tag tag-new">Novo</span>Corte multicâmera por quem está falando, com a regra "o mic mais alto vence".</li>
+                <li><span class="tag tag-new">Novo</span>Calibração automática do limite de cada microfone.</li>
+                <li><span class="tag tag-new">Novo</span>Suporte a microfones gravados num único arquivo multicanal.</li>
+                <li><span class="tag tag-new">Novo</span>Valores editáveis com duplo clique.</li>
+                <li><span class="tag tag-new">Novo</span>FFmpeg (só áudio) embutido: nada para baixar à parte.</li>
+                <li><span class="tag tag-new">Novo</span>Aviso de microfone silencioso e prévia mais clara.</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="release reveal">
+            <div class="card">
+              <div class="rel-head"><span class="rel-ver">v0.1.0</span><span class="rel-date">3 de novembro de 2026</span></div>
+              <h3>Primeiros passos</h3>
+              <ul class="rel-list">
+                <li><span class="tag tag-new">Novo</span>Painel do Buddy Editor dentro do Premiere, com abas para os módulos.</li>
+                <li><span class="tag tag-new">Novo</span>Interface em português e inglês, seguindo o idioma do Premiere.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section style="padding-top:0">
+      <div class="wrap">
+        <div class="card reveal" style="text-align:center; padding:clamp(28px,4vw,44px); max-width:760px; margin:0 auto">
+          <span class="eyebrow">Fique por dentro</span>
+          <h2 style="font-size:clamp(1.5rem,3vw,2rem); margin:12px 0 8px">Quer saber quando o Silences sair?</h2>
+          <p>Deixe seu e-mail e o Buddy te avisa a cada módulo novo. Nada de spam.</p>
+          <!-- TODO: ligar a um serviço de e-mail (ex.: Resend / Supabase) -->
+          <form class="subscribe" data-subscribe>
+            <input type="email" required placeholder="seu@email.com" aria-label="Seu e-mail">
+            <button class="btn btn-primary" type="submit">Me avise</button>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="wrap">
+      <div class="footer-grid">
+        <div>
+          <a class="brand" href="index.html"><img src="buddy_editor_camadas_editavel.svg" alt="" width="38" height="33"><span class="brand-text">Buddy Editor</span></a>
+          <p>O parceiro que corta, troca câmera e organiza sua timeline dentro do Premiere Pro, enquanto você cuida da parte criativa.</p>
+        </div>
+        <div>
+          <h4>Produto</h4>
+          <ul>
+            <li><a href="funcionalidades.html">Funcionalidades</a></li>
+            <li><a href="precos.html">Preços</a></li>
+            <li><a href="atualizacoes.html">Atualizações</a></li>
+            <li><a href="index.html#baixar">Baixar</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Módulos</h4>
+          <ul>
+            <li><a href="funcionalidades.html#podcast">Buddy Podcast</a></li>
+            <li><a href="funcionalidades.html#silences">Buddy Silences</a></li>
+            <li><a href="funcionalidades.html#zoom">Buddy Zoom</a></li>
+            <li><a href="funcionalidades.html#captions">Buddy Captions</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Legal</h4>
+          <ul>
+            <!-- TODO: criar as páginas (exigidas pela Paddle antes da aprovação do domínio) -->
+            <li><a href="#">Termos de uso</a></li>
+            <li><a href="#">Política de reembolso</a></li>
+            <li><a href="#">Privacidade</a></li>
+            <li><a href="#">Contato</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© <span data-year>2026</span> Buddy Editor. Feito com 🧡 para editores.</span>
+        <span>Adobe e Premiere Pro são marcas da Adobe Inc. O Buddy Editor não é afiliado à Adobe.</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/buddy.js"></script>
+  <script src="js/site.js"></script>
+</body>
+</html>

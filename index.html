@@ -3,1075 +3,300 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Buddy - Idle Animation</title>
+  <title>Buddy Editor · Seu parceiro de edição no Premiere Pro</title>
+  <meta name="description" content="Extensão para Premiere Pro que troca de câmera sozinha em podcasts, corta silêncios e organiza sua timeline. Roda 100% no seu PC.">
+  <meta name="theme-color" content="#070b16">
+  <meta property="og:title" content="Buddy Editor · Seu parceiro de edição no Premiere Pro">
+  <meta property="og:description" content="Extensão para Premiere Pro que troca de câmera sozinha em podcasts, corta silêncios e organiza sua timeline. Roda 100% no seu PC.">
+  <meta property="og:type" content="website">
+  <link rel="icon" type="image/svg+xml" href="buddy_editor_camadas_editavel.svg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <style>
-    :root {
-      --bg-dark: #0a0f1d;
-      --bg-gradient: radial-gradient(circle at 50% 40%, #172642 0%, #0d1527 50%, #060913 100%);
-      --accent-cyan: #7ef5ff;
-      --accent-blue: #4fc5e4;
-      --accent-deep-blue: #4c65c8;
-      --accent-orange: #ff7b3d;
-      --primary-navy: #172744;
-      --card-bg: rgba(23, 39, 68, 0.45);
-      --card-border: rgba(126, 245, 255, 0.15);
-      --text-main: #f0f6fc;
-      --text-muted: #8b9bb4;
-      --idle-duration: 4s;
-    }
-
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-      user-select: none;
-      -webkit-user-select: none;
-    }
-
-    body {
-      height: 100vh;
-      max-height: 100vh;
-      width: 100vw;
-      overflow: hidden;
-      background: var(--bg-dark);
-      background-image: var(--bg-gradient);
-      font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
-      color: var(--text-main);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: space-between;
-      position: relative;
-    }
-
-    /* Ambient background grid & glow */
-    .bg-grid {
-      position: absolute;
-      inset: 0;
-      background-size: 40px 40px;
-      background-image: 
-        linear-gradient(to right, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
-        linear-gradient(to bottom, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
-      pointer-events: none;
-      z-index: 0;
-    }
-
-    .ambient-glow {
-      position: absolute;
-      width: 600px;
-      height: 600px;
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(79, 197, 228, 0.18) 0%, rgba(76, 101, 200, 0.08) 50%, transparent 70%);
-      top: 45%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      pointer-events: none;
-      filter: blur(40px);
-      z-index: 0;
-      animation: ambientPulse 6s ease-in-out infinite alternate;
-    }
-
-    @keyframes ambientPulse {
-      0% { transform: translate(-50%, -50%) scale(0.9); opacity: 0.6; }
-      100% { transform: translate(-50%, -50%) scale(1.15); opacity: 0.95; }
-    }
-
-    /* Top Navigation / Status Header */
-    header {
-      width: 100%;
-      max-width: 900px;
-      padding: 16px 20px 8px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      z-index: 10;
-      flex-shrink: 0;
-    }
-
-    .logo-badge {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      background: var(--card-bg);
-      border: 1px solid var(--card-border);
-      padding: 6px 14px;
-      border-radius: 100px;
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
-    }
-
-    .status-dot {
-      width: 10px;
-      height: 10px;
-      border-radius: 50%;
-      background: #10b981;
-      box-shadow: 0 0 12px #10b981;
-      animation: dotPulse 2s infinite ease-in-out;
-    }
-
-    @keyframes dotPulse {
-      0%, 100% { opacity: 1; transform: scale(1); }
-      50% { opacity: 0.5; transform: scale(0.85); }
-    }
-
-    .status-text {
-      font-size: 13px;
-      font-weight: 700;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: #7ef5ff;
-    }
-
-    .status-sub {
-      font-size: 13px;
-      color: var(--text-muted);
-      font-weight: 500;
-    }
-
-    .hint-chip {
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      padding: 6px 14px;
-      border-radius: 100px;
-      font-size: 12px;
-      color: var(--text-muted);
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      backdrop-filter: blur(8px);
-    }
-
-    /* Stage Area */
-    .stage {
-      position: relative;
-      width: 100%;
-      flex: 1;
-      min-height: 0;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      z-index: 5;
-      perspective: 1000px;
-      cursor: pointer;
-      padding: 10px 20px;
-    }
-
-    /* Character Container */
-    .character-wrap {
-      position: relative;
-      height: 100%;
-      max-height: min(58vh, 440px);
-      width: auto;
-      aspect-ratio: 1080 / 932.21;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      transform-style: preserve-3d;
-      transition: transform 0.15s ease-out;
-    }
-
-    /* Floating Shadow below Buddy */
-    .character-shadow {
-      position: absolute;
-      bottom: -15px;
-      width: 65%;
-      height: 28px;
-      background: radial-gradient(ellipse at center, rgba(8, 14, 26, 0.8) 0%, rgba(8, 14, 26, 0.3) 50%, transparent 75%);
-      border-radius: 50%;
-      filter: blur(5px);
-      transform-origin: center;
-      animation: shadowPulse var(--idle-duration) ease-in-out infinite;
-      pointer-events: none;
-    }
-
-    @keyframes shadowPulse {
-      0%, 100% {
-        transform: scale(1);
-        opacity: 0.75;
-      }
-      50% {
-        transform: scale(0.85);
-        opacity: 0.35;
-      }
-    }
-
-    /* SVG Character Styling */
-    .buddy-svg {
-      width: 100%;
-      height: 100%;
-      overflow: visible;
-      filter: drop-shadow(0 18px 30px rgba(0, 0, 0, 0.45));
-    }
-
-    /* -------------------------------------------------------------
-       IDLE ANIMATIONS & SECONDARY MOTIONS (CSS-DRIVEN)
-       ------------------------------------------------------------- */
-    
-    /* Main Float Cycle */
-    #buddy-character {
-      transform-origin: 546px 522px;
-      animation: buddyIdleFloat var(--idle-duration) ease-in-out infinite;
-      will-change: transform;
-    }
-
-    @keyframes buddyIdleFloat {
-      0%, 100% {
-        transform: translateY(0px) rotate(0deg) scale(1, 1);
-      }
-      25% {
-        transform: translateY(-8px) rotate(-0.6deg) scale(0.995, 1.006);
-      }
-      50% {
-        transform: translateY(-18px) rotate(0.4deg) scale(0.99, 1.012);
-      }
-      75% {
-        transform: translateY(-8px) rotate(0.7deg) scale(0.995, 1.006);
-      }
-    }
-
-    /* Hair Secondary Motion (Lagging wave) */
-    #character-hair {
-      transform-origin: 546px 200px;
-      animation: hairIdleWave var(--idle-duration) ease-in-out infinite;
-      will-change: transform;
-    }
-
-    @keyframes hairIdleWave {
-      0%, 100% {
-        transform: rotate(0deg) translateY(0);
-      }
-      30% {
-        transform: rotate(1.6deg) translateY(-2px);
-      }
-      70% {
-        transform: rotate(-1.4deg) translateY(1.5px);
-      }
-    }
-
-    /* Eyebrow Micro-Float & Breathing */
-    .eyebrow-item {
-      transform-origin: center;
-      transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
-      animation: eyebrowIdle var(--idle-duration) ease-in-out infinite;
-    }
-
-    @keyframes eyebrowIdle {
-      0%, 100% {
-        transform: translateY(0px);
-      }
-      50% {
-        transform: translateY(-3px);
-      }
-    }
-
-    /* Headphones subtle spring */
-    #layer-headphones-front {
-      transform-origin: 546px 522px;
-      animation: headphonesIdle var(--idle-duration) ease-in-out infinite;
-    }
-
-    @keyframes headphonesIdle {
-      0%, 100% {
-        transform: scale(1) translateY(0);
-      }
-      50% {
-        transform: scale(1.008) translateY(-1px);
-      }
-    }
-
-    /* Mouth subtle breathing smile */
-    #mouth-group {
-      transform-origin: 550px 670px;
-      animation: mouthIdle var(--idle-duration) ease-in-out infinite;
-    }
-
-    @keyframes mouthIdle {
-      0%, 100% { transform: scale(1); }
-      50% { transform: scale(1.02, 0.98); }
-    }
-
-    /* -------------------------------------------------------------
-       EYES & BLINKING SYSTEM
-       ------------------------------------------------------------- */
-    
-    .eye-container {
-      /* Group holding the eye elements */
-      transform-box: view-box;
-    }
-
-    /* Eyeball/Eyelid scaling for blinking */
-    #eye-left-scale {
-      transform-origin: 400.11px 518.96px;
-      transform-box: view-box;
-      will-change: transform;
-    }
-
-    #eye-right-scale {
-      transform-origin: 696.81px 518.96px;
-      transform-box: view-box;
-      will-change: transform;
-    }
-
-    /* CSS Default Natural Blinking (Runs reliably without JS) */
-    .auto-blink #eye-left-scale,
-    .auto-blink #eye-right-scale {
-      animation: organicBlink 5s ease-in-out infinite;
-    }
-
-    @keyframes organicBlink {
-      0%, 42%, 46%, 76%, 80%, 100% {
-        transform: scaleY(1);
-      }
-      44% {
-        transform: scaleY(0.06); /* quick natural blink */
-      }
-      78% {
-        transform: scaleY(0.06); /* quick double-blink */
-      }
-    }
-
-    /* Eyebrow blink sync: micro-dip during blink */
-    .auto-blink #layer-eyebrows {
-      animation: eyebrowBlinkDip 5s ease-in-out infinite;
-    }
-
-    @keyframes eyebrowBlinkDip {
-      0%, 42%, 46%, 76%, 80%, 100% {
-        transform: translateY(0);
-      }
-      44%, 78% {
-        transform: translateY(3.5px);
-      }
-    }
-
-    /* Pupil Gaze / Tracking Layer */
-    #eyes-pupil-group {
-      transition: transform 0.12s cubic-bezier(0.2, 0, 0.2, 1);
-      will-change: transform;
-    }
-
-    /* Manual / JS-triggered Blink Class */
-    .is-blinking #eye-left-scale,
-    .is-blinking #eye-right-scale {
-      animation: none !important;
-      transform: scaleY(0.06) !important;
-    }
-
-    .is-blinking #layer-eyebrows {
-      transform: translateY(4px) !important;
-    }
-
-    /* Winking State (Right eye closed as cute arc) */
-    .is-winking #eye-right-scale {
-      display: none;
-    }
-    .is-winking #eye-right-wink {
-      display: block !important;
-      opacity: 1 !important;
-    }
-    .is-winking #eyebrow-right {
-      transform: translateY(5px) rotate(3deg);
-    }
-
-    /* Click Bounce Reaction */
-    .is-reacting #buddy-character {
-      animation: buddyHappyBounce 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) !important;
-    }
-
-    @keyframes buddyHappyBounce {
-      0% { transform: translateY(0) scale(1, 1); }
-      30% { transform: translateY(12px) scale(1.12, 0.88); }
-      60% { transform: translateY(-30px) scale(0.92, 1.14); }
-      80% { transform: translateY(-4px) scale(1.04, 0.96); }
-      100% { transform: translateY(0) scale(1, 1); }
-    }
-
-    /* Click particle bubble */
-    .particle {
-      position: absolute;
-      pointer-events: none;
-      font-size: 20px;
-      animation: floatUpFade 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-      z-index: 20;
-    }
-
-    @keyframes floatUpFade {
-      0% {
-        opacity: 1;
-        transform: translate(-50%, -50%) scale(0.5);
-      }
-      50% {
-        transform: translate(calc(-50% + var(--dx)), calc(-50% - 40px)) scale(1.2);
-        opacity: 0.9;
-      }
-      100% {
-        transform: translate(calc(-50% + var(--dx) * 1.5), calc(-50% - 90px)) scale(0.8);
-        opacity: 0;
-      }
-    }
-
-    /* -------------------------------------------------------------
-       BOTTOM CONTROLS & DASHBOARD
-       ------------------------------------------------------------- */
-    
-    footer {
-      width: 100%;
-      max-width: 900px;
-      padding: 8px 20px 18px;
-      margin-bottom: 0;
-      z-index: 10;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 12px;
-      flex-shrink: 0;
-    }
-
-    .controls-panel {
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-      background: var(--card-bg);
-      border: 1px solid var(--card-border);
-      padding: 10px 14px;
-      border-radius: 20px;
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
-    }
-
-    .btn {
-      background: rgba(255, 255, 255, 0.06);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      color: var(--text-main);
-      padding: 9px 16px;
-      border-radius: 12px;
-      font-size: 13px;
-      font-weight: 600;
-      font-family: inherit;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      transition: all 0.2s cubic-bezier(0.2, 0, 0, 1);
-    }
-
-    .btn:hover {
-      background: rgba(126, 245, 255, 0.15);
-      border-color: rgba(126, 245, 255, 0.4);
-      color: #fff;
-      transform: translateY(-2px);
-      box-shadow: 0 4px 12px rgba(126, 245, 255, 0.2);
-    }
-
-    .btn:active {
-      transform: translateY(0);
-    }
-
-    .btn.active {
-      background: linear-gradient(135deg, rgba(126, 245, 255, 0.3), rgba(76, 101, 200, 0.3));
-      border-color: var(--accent-cyan);
-      color: #fff;
-      box-shadow: 0 0 15px rgba(126, 245, 255, 0.35);
-    }
-
-    .divider {
-      width: 1px;
-      height: 24px;
-      background: rgba(255, 255, 255, 0.12);
-      margin: 0 4px;
-    }
-
-    .speed-group {
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      background: rgba(0, 0, 0, 0.2);
-      padding: 4px;
-      border-radius: 10px;
-    }
-
-    .speed-btn {
-      background: transparent;
-      border: none;
-      color: var(--text-muted);
-      padding: 6px 10px;
-      border-radius: 8px;
-      font-size: 12px;
-      font-weight: 600;
-      font-family: inherit;
-      cursor: pointer;
-      transition: all 0.15s;
-    }
-
-    .speed-btn:hover {
-      color: #fff;
-    }
-
-    .speed-btn.active {
-      background: rgba(255, 255, 255, 0.14);
-      color: #fff;
-    }
-
-    .footer-note {
-      font-size: 12px;
-      color: var(--text-muted);
-      text-align: center;
-    }
-
-    .footer-note span {
-      color: var(--accent-cyan);
-      font-weight: 600;
-    }
-
-    /* Responsive adjustments */
-    @media (max-width: 640px) {
-      .stage {
-        height: 420px;
-      }
-      .character-wrap {
-        max-width: 340px;
-      }
-      .character-shadow {
-        width: 240px;
-        height: 28px;
-      }
-      .btn {
-        padding: 8px 12px;
-        font-size: 12px;
-      }
-      .hint-chip {
-        display: none;
-      }
-    }
-  </style>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+  <div class="bg-deco" aria-hidden="true"></div>
 
-  <!-- Ambient Grid & Glow -->
-  <div class="bg-grid"></div>
-  <div class="ambient-glow"></div>
-
-  <!-- Header -->
-  <header>
-    <div class="logo-badge">
-      <div class="status-dot"></div>
-      <span class="status-text">Buddy</span>
-      <span class="status-sub">• Idle Mode</span>
-    </div>
-    <div class="hint-chip">
-      <span>💡 Clique no personagem ou mova o mouse</span>
+  <header class="nav">
+    <div class="wrap nav-inner">
+      <a class="brand" href="index.html" aria-label="Buddy Editor, início">
+        <img src="buddy_editor_camadas_editavel.svg" alt="" width="38" height="33">
+        <span class="brand-text">Buddy Editor<small>para Premiere Pro</small></span>
+      </a>
+      <nav aria-label="Principal">
+        <ul class="nav-links"><li><a href="index.html" aria-current="page">Início</a></li><li><a href="funcionalidades.html">Funcionalidades</a></li><li><a href="precos.html">Preços</a></li><li><a href="atualizacoes.html">Atualizações</a></li></ul>
+      </nav>
+      <div class="nav-cta">
+        <a class="btn btn-ghost btn-sm" href="precos.html">Ver planos</a>
+        <a class="btn btn-primary btn-sm" href="index.html#baixar">Baixar grátis</a>
+        <button class="nav-toggle" aria-label="Abrir menu" aria-expanded="false"><span></span></button>
+      </div>
     </div>
   </header>
 
-  <!-- Interactive Character Stage -->
-  <main class="stage" id="stage" title="Clique no Buddy!">
-    <div class="character-wrap" id="character-wrap">
-      
-      <!-- Embedded SVG Mascot -->
-      <svg class="buddy-svg auto-blink" id="buddy-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 932.21">
-        <defs>
-          <style>
-            .st0 {
-              stroke-width: 28px;
-            }
+  <main>
+    <!-- HERO: Buddy interativo no topo, centralizado -->
+    <section class="hero">
+      <div class="wrap">
+        <div data-buddy data-hint data-greeting="Oi! Eu sou o Buddy 👋"></div>
 
-            .st0, .st1, .st2, .st3, .st4, .st5, .st6, .st7, .st8 {
-              stroke: #172744;
-            }
+        <span class="eyebrow" style="margin-top:22px">Extensão para Adobe Premiere Pro</span>
+        <h1>Você cria. <span class="hl">O Buddy edita</span> o trabalho chato.</h1>
+        <p class="lead">Um parceiro dentro do Premiere que escuta os microfones do seu podcast, troca a câmera de quem está falando e deixa a timeline pronta para você só lapidar. Tudo no seu PC, sem enviar nada para a nuvem.</p>
+        <div class="hero-ctas">
+          <a class="btn btn-primary" href="#baixar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="m7 10 5 5 5-5"/><path d="M12 15V3"/></svg> Baixar e testar grátis</a>
+          <a class="btn btn-ghost" href="#demo">Ver o Buddy trabalhando <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+        </div>
+        <div class="hero-meta">
+          <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg> 7 dias grátis, sem cartão</span>
+          <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg> Windows 10/11 · Premiere Pro 2022+</span>
+          <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg> Backup automático antes de cada edição</span>
+        </div>
 
-            .st0, .st9, .st7 {
-              fill: none;
-            }
+        <!-- DEMO: timeline fake mostrando o Buddy Podcast -->
+        <div class="demo reveal" id="demo">
+          <div class="tl" data-timeline>
+            <div class="tl-bar">
+              <div class="tl-title"><span class="tl-dots"><i></i><i></i><i></i></span> Sequência: <b>Podcast_Ep12</b></div>
+              <div class="tl-switch" role="group" aria-label="Comparar antes e depois">
+                <button data-mode="before" class="on">Antes</button>
+                <button data-mode="after">Depois do Buddy</button>
+              </div>
+            </div>
+            <div class="tl-body">
+              <div class="tl-tracks">
+                <div class="tl-ruler"><span>00:00</span><span>05:00</span><span>10:00</span><span>15:00</span><span>20:00</span></div>
+                <div class="tl-row"><div class="tl-label">V3 <em>Ana</em></div><div class="tl-lane" data-lane="ana"></div></div>
+                <div class="tl-row"><div class="tl-label">V2 <em>Beto</em></div><div class="tl-lane" data-lane="beto"></div></div>
+                <div class="tl-row"><div class="tl-label">V1 <em>Geral</em></div><div class="tl-lane" data-lane="wide"></div></div>
+                <div class="tl-row audio"><div class="tl-label">A1 <em>Mic</em></div><div class="tl-lane"><div class="wave ana" data-who="ana"></div></div></div>
+                <div class="tl-row audio"><div class="tl-label">A2 <em>Mic</em></div><div class="tl-lane"><div class="wave beto" data-who="beto"></div></div></div>
+                <div class="playhead"></div>
+              </div>
+              <div class="tl-monitor">
+                <div class="tl-screen"><span class="rec">PROGRAMA</span><span class="face"></span><span class="who">CAM 1 · Ana</span></div>
+                <div class="tl-stats">
+                  <div class="tl-stat"><b data-stat="cuts">0</b><span>cortes</span></div>
+                  <div class="tl-stat"><b data-stat="time">—</b><span>para editar</span></div>
+                </div>
+                <div class="tl-status"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
-            .st0, .st7 {
-              stroke-linecap: round;
-            }
+    <!-- MÓDULOS -->
+    <section id="modulos">
+      <div class="wrap">
+        <div class="section-head center reveal">
+          <span class="eyebrow">Uma extensão, seis ajudantes</span>
+          <h2>Um Buddy para cada parte <span class="hl-orange">repetitiva</span> da edição</h2>
+          <p class="lead">Tudo num único painel no Premiere. Comece pelo Podcast, que já está pronto, e ganhe os próximos módulos conforme forem lançados.</p>
+        </div>
 
-            .st1 {
-              fill: url(#linear-gradient2);
-            }
+        <div class="modules">
+          <article class="card module featured reveal">
+            <div class="module-top">
+              <div class="module-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><path d="M12 19v3"/></svg></div>
+              <span class="chip chip-live">Disponível</span>
+            </div>
+            <div class="feat-body">
+              <div>
+                <h3><span>Módulo 1</span>Buddy Podcast</h3>
+                <p style="margin-top:10px">Corte multicâmera automático guiado por quem está falando. Você só diz qual microfone é de quem e qual câmera mostra cada pessoa. O Buddy escuta, decide e corta.</p>
+              </div>
+              <ul>
+                <li>O microfone mais alto ganha a câmera, então o vazamento entre mics nunca engana o Buddy</li>
+                <li>Calibra o volume de cada mic sozinho</li>
+                <li>Lê áudio multicanal igualzinho ao Premiere</li>
+                <li>Prévia completa antes de mexer na sua timeline</li>
+                <li>Nunca muda a duração da sequência</li>
+              </ul>
+            </div>
+            <div class="mini-preview" aria-label="Exemplo da prévia de análise">
+              <div class="mp-head"><span>Prévia da análise</span><b>6 cortes</b></div>
+              <div class="mp-strip">
+                <i class="c-wide" style="flex:12"></i><i class="c-ana" style="flex:17"></i><i class="c-beto" style="flex:12"></i><i class="c-ana" style="flex:16"></i><i class="c-wide" style="flex:7"></i><i class="c-beto" style="flex:17"></i><i class="c-ana" style="flex:19"></i>
+              </div>
+              <div class="mp-ruler"><span>00:00</span><span>10:00</span><span>20:00</span></div>
+              <div class="mp-legend"><span><i class="c-ana"></i>CAM 1 · Ana</span><span><i class="c-beto"></i>CAM 2 · Beto</span><span><i class="c-wide"></i>CAM 3 · Plano geral</span></div>
+              <div class="mp-rows">
+                <div class="mp-row"><span>Ana</span><div class="mp-bar"><i class="c-ana" style="width:46%"></i></div><b>46%</b></div>
+                <div class="mp-row"><span>Beto</span><div class="mp-bar"><i class="c-beto" style="width:38%"></i></div><b>38%</b></div>
+                <div class="mp-row"><span>Conversa cruzada</span><div class="mp-bar"><i class="c-wide" style="width:6%"></i></div><b>6%</b></div>
+                <div class="mp-row"><span>Silêncio</span><div class="mp-bar"><i style="width:10%;background:#33415e"></i></div><b>10%</b></div>
+              </div>
+            </div>
+          </article>
 
-            .st1, .st2, .st3, .st5, .st8 {
-              stroke-width: 14px;
-            }
+          <article class="card module is-soon reveal">
+            <div class="module-top"><div class="module-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="6" cy="6" r="3"/><path d="M8.12 8.12 12 12"/><path d="M20 4 8.12 15.88"/><circle cx="6" cy="18" r="3"/><path d="M14.8 14.8 20 20"/></svg></div><span class="chip chip-soon">Próximo</span></div>
+            <h3><span>Módulo 2</span>Buddy Silences</h3>
+            <p>Remove as pausas mortas de vídeos falados, com margem antes e depois da fala para nada soar cortado.</p>
+            <ul><li>Funciona com vários microfones ao mesmo tempo</li><li>Ripple delete ou lift, você escolhe</li></ul>
+          </article>
 
-            .st2 {
-              fill: url(#linear-gradient5);
-            }
+          <article class="card module is-soon reveal">
+            <div class="module-top"><div class="module-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/><path d="M11 8v6M8 11h6"/></svg></div><span class="chip chip-soon">Em breve</span></div>
+            <h3><span>Módulo 3</span>Buddy Zoom</h3>
+            <p>Punch-ins e zooms suaves automáticos para segurar a atenção, sem keyframe na mão.</p>
+            <ul><li>Corte seco ou rampa suave</li><li>Enquadra nos olhos (terço superior)</li></ul>
+          </article>
 
-            .st3 {
-              fill: url(#linear-gradient1);
-            }
+          <article class="card module is-soon reveal">
+            <div class="module-top"><div class="module-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 5 6 9H2v6h4l5 4V5Z"/><path d="m22 9-6 6M16 9l6 6"/></svg></div><span class="chip chip-soon">Em breve</span></div>
+            <h3><span>Módulo 4</span>Buddy Profanity</h3>
+            <p>Transcreve com IA local e censura palavrões ou termos que você escolher.</p>
+            <ul><li>Bip, mudo, corte ou só marcadores</li><li>Português, inglês e espanhol</li></ul>
+          </article>
 
-            .st10 {
-              fill: #172744;
-            }
+          <article class="card module is-soon reveal">
+            <div class="module-top"><div class="module-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m22 8-6 4 6 4V8Z"/><rect width="14" height="12" x="2" y="6" rx="2"/></svg></div><span class="chip chip-soon">Em breve</span></div>
+            <h3><span>Módulo 5</span>Buddy Angles</h3>
+            <p>Uma pessoa, várias câmeras: alterna os ângulos no ritmo certo para o vídeo não ficar parado.</p>
+            <ul><li>Por intervalo de tempo ou nos cortes existentes</li><li>Sequencial ou aleatório sem repetir</li></ul>
+          </article>
 
-            .st4 {
-              fill: url(#linear-gradient4);
-              stroke-linejoin: round;
-              stroke-width: 12px;
-            }
+          <article class="card module is-soon reveal">
+            <div class="module-top"><div class="module-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="18" height="14" x="3" y="5" rx="2"/><path d="M7 15h4M15 15h2M7 11h2M13 11h4"/></svg></div><span class="chip chip-soon">Em breve</span></div>
+            <h3><span>Módulo 6</span>Buddy Captions</h3>
+            <p>Legendas dinâmicas palavra por palavra, com destaque na palavra falada.</p>
+            <ul><li>SRT ou template animado (.mogrt)</li><li>Cores, posição e caixa alta ajustáveis</li></ul>
+          </article>
+        </div>
 
-            .st9 {
-              stroke: #000;
-              stroke-width: 55px;
-            }
+        <div class="center-x" style="margin-top:36px">
+          <a class="btn btn-ghost" href="funcionalidades.html">Ver todos os detalhes <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+        </div>
+      </div>
+    </section>
 
-            .st5 {
-              fill: url(#linear-gradient6);
-            }
+    <!-- PROMESSAS -->
+    <section>
+      <div class="wrap">
+        <div class="section-head center reveal">
+          <span class="eyebrow">O jeito Buddy de trabalhar</span>
+          <h2>Ele mexe na sua timeline com <span class="hl">cuidado de amigo</span></h2>
+        </div>
+        <div class="promises">
+          <div class="card promise reveal"><div class="p-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg></div><h3>Backup antes de tudo</h3><p>Antes de qualquer corte, o Buddy duplica sua sequência. Não gostou? A original está lá, intacta.</p></div>
+          <div class="card promise reveal"><div class="p-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/><path d="M15 2v2M15 20v2M2 15h2M2 9h2M20 15h2M20 9h2M9 2v2M9 20v2"/></svg></div><h3>100% no seu PC</h3><p>FFmpeg embutido e IA local. Seus episódios nunca saem da sua máquina, e funciona offline.</p></div>
+          <div class="card promise reveal"><div class="p-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg></div><h3>Prévia antes de aplicar</h3><p>Veja quantos cortes, quanto cada um falou e a mini timeline colorida antes de clicar em aplicar.</p></div>
+          <div class="card promise reveal"><div class="p-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></div><h3>Fala sua língua</h3><p>Interface em português e inglês, seguindo o idioma do seu Premiere automaticamente.</p></div>
+        </div>
+      </div>
+    </section>
 
-            .st6 {
-              fill: url(#linear-gradient3);
-              stroke-width: 15px;
-            }
+    <!-- COMO FUNCIONA / BAIXAR -->
+    <section id="baixar">
+      <div class="wrap">
+        <div class="section-head center reveal">
+          <span class="eyebrow">Do download ao primeiro corte</span>
+          <h2>Três passos e o Buddy já está trabalhando</h2>
+        </div>
+        <div class="steps">
+          <div class="card step reveal">
+            <h3>Instale em um minuto</h3>
+            <p>Baixe o <code>BuddyEditor.zxp</code> e solte no ZXP Installer (gratuito). Feche o Premiere antes.</p>
+          </div>
+          <div class="card step reveal">
+            <h3>Abra no Premiere</h3>
+            <p>Vá em <code>Janela › Extensões › Buddy Editor</code>. O painel termina a configuração sozinho.</p>
+          </div>
+          <div class="card step reveal">
+            <h3>Analise e aplique</h3>
+            <p>Diga de quem é cada mic e câmera, clique em Analisar, confira a prévia e aplique. Pronto.</p>
+          </div>
+        </div>
+        <div class="center-x" style="margin-top:40px; gap:14px; flex-wrap:wrap">
+          <!-- TODO: apontar para o .zxp da última versão (GitHub Releases: buddy-editor-releases) -->
+          <a class="btn btn-primary" href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="m7 10 5 5 5-5"/><path d="M12 15V3"/></svg> Baixar Buddy Editor v1.0.0</a>
+          <a class="btn btn-ghost" href="https://aescripts.com/learn/zxp-installer/" target="_blank" rel="noopener">Pegar o ZXP Installer</a>
+        </div>
+      </div>
+    </section>
 
-            .st11 {
-              fill: #a6b4c9;
-              isolation: isolate;
-              opacity: .9;
-            }
+    <!-- FAQ -->
+    <section>
+      <div class="wrap">
+        <div class="section-head center reveal">
+          <span class="eyebrow">Perguntas frequentes</span>
+          <h2>Ficou alguma dúvida?</h2>
+        </div>
+        <div class="faq reveal">
+          <details><summary>Funciona no Mac?</summary><p>Ainda não. Hoje o Buddy roda no Windows 10/11 (64 bits) com Premiere Pro 2022 ou mais novo. A versão para macOS está no plano. Acompanhe em <a class="hl" href="atualizacoes.html">Atualizações</a>.</p></details>
+          <details><summary>O Buddy pode estragar meu projeto?</summary><p>Antes de qualquer alteração ele cria uma cópia de backup da sequência e mostra o nome dela no resultado. O Buddy Podcast também nunca apaga tempo da timeline: ele corta e liga/desliga clipes, então a duração fica idêntica.</p></details>
+          <details><summary>Meus microfones estão todos num arquivo estéreo. E agora?</summary><p>Sem problema. O Buddy lê os canais do arquivo do mesmo jeito que o Premiere ("Ch. 1", "Ch. 2"…) e separa cada mic sozinho. Se dois mics receberem o mesmo áudio, ele avisa e corrige com um clique.</p></details>
+          <details><summary>Preciso de uma placa de vídeo boa?</summary><p>Para o Buddy Podcast, não: ele só analisa o volume do áudio e é bem leve. Os módulos com IA (Profanity e Captions) vão rodar mais rápido com uma placa NVIDIA, mas também funcionam no processador.</p></details>
+          <details><summary>Quanto custa?</summary><p>Você testa tudo por 7 dias grátis. Depois, escolhe só o Buddy Podcast ou o Combo com todos os módulos. Veja a <a class="hl" href="precos.html">página de preços</a>.</p></details>
+        </div>
+      </div>
+    </section>
 
-            .st7 {
-              stroke-width: 24px;
-            }
-
-            .st8 {
-              fill: url(#linear-gradient);
-            }
-          </style>
-
-          <!-- Gradients -->
-          <linearGradient id="linear-gradient" x1="148.01" y1="281.32" x2="945.52" y2="281.32" gradientUnits="userSpaceOnUse">
-            <stop offset="0" stop-color="#7ef5ff"/>
-            <stop offset=".45" stop-color="#4fc5e4"/>
-            <stop offset="1" stop-color="#4c65c8"/>
-          </linearGradient>
-
-          <linearGradient id="linear-gradient1" x1="-1.75" y1="-164.54" x2="-1.75" y2="-163.19" gradientTransform="translate(190.68 29034.31) scale(57.32 174)" gradientUnits="userSpaceOnUse">
-            <stop offset="0" stop-color="#7ef5ff"/>
-            <stop offset=".45" stop-color="#4fc5e4"/>
-            <stop offset="1" stop-color="#4c65c8"/>
-          </linearGradient>
-
-          <linearGradient id="linear-gradient2" x1="2.3" y1="-164.5" x2="2.3" y2="-163.14" gradientTransform="translate(868 29034.31) scale(57.32 174)" gradientUnits="userSpaceOnUse">
-            <stop offset="0" stop-color="#7ef5ff"/>
-            <stop offset=".45" stop-color="#4fc5e4"/>
-            <stop offset="1" stop-color="#4c65c8"/>
-          </linearGradient>
-
-          <linearGradient id="linear-gradient3" x1="209.36" y1="522.19" x2="884.18" y2="522.19" gradientTransform="translate(0 1045.09) scale(1 -1)" gradientUnits="userSpaceOnUse">
-            <stop offset="0" stop-color="#fff"/>
-            <stop offset="1" stop-color="#ddebfa"/>
-          </linearGradient>
-
-          <linearGradient id="linear-gradient4" x1="253.45" y1="782.49" x2="840.09" y2="782.49" gradientTransform="translate(0 1045.09) scale(1 -1)" gradientUnits="userSpaceOnUse">
-            <stop offset="0" stop-color="#ffa95b"/>
-            <stop offset=".45" stop-color="#ff7b3d"/>
-            <stop offset="1" stop-color="#f04a3d"/>
-          </linearGradient>
-
-          <linearGradient id="linear-gradient5" x1="-1.09" y1="-165.72" x2="-1.09" y2="-164.36" gradientTransform="translate(246 41292.35) scale(69 247)" gradientUnits="userSpaceOnUse" href="#linear-gradient">
-            <stop offset="0" stop-color="#7ef5ff"/>
-            <stop offset=".45" stop-color="#4fc5e4"/>
-            <stop offset="1" stop-color="#4c65c8"/>
-          </linearGradient>
-
-          <linearGradient id="linear-gradient6" x1="1.75" y1="-165.72" x2="1.75" y2="-164.36" gradientTransform="translate(802 41292.35) scale(69 247)" gradientUnits="userSpaceOnUse">
-            <stop offset="0" stop-color="#7ef5ff"/>
-            <stop offset=".45" stop-color="#4fc5e4"/>
-            <stop offset="1" stop-color="#4c65c8"/>
-          </linearGradient>
-        </defs>
-
-        <!-- Entire Character Group (Animates Idle Float & Squash/Stretch) -->
-        <g id="buddy-character">
-          
-          <!-- Outer Silhouette Stroke -->
-          <g id="Layer_2">
-            <path class="st9" d="M969.31,410.83h0s-.14,3.92-.14,3.92v-11.35c0-22.71-18.07-41.19-40.62-41.87-10.1-47.63-27.38-102.35-62.75-151.69-63-87.85-165.95-132.37-306.17-132.37-.96,0-1.95,0-2.92,0-87.58.74-163.7,20.33-226.24,58.24-50.43,30.56-91.93,72.86-123.36,125.72-20.98,35.29-34.57,70.38-43.34,100.14-21.98,1.29-39.4,19.52-39.4,41.82v91.3l-3.08-89.38c-48.66,9.46-72.99,62.18-68.94,129.76,3.9,62.41,30.32,98.53,72.02,104.81v13.57c0,23.14,18.76,41.9,41.9,41.9h9.46c23.14,0,41.9-18.76,41.9-41.9v-56.04c33.92,150.49,168.4,262.9,329.14,262.9s295.22-112.41,329.14-262.9v56.04c0,23.14,18.76,41.9,41.9,41.9h9.46c23.14,0,41.9-18.76,41.9-41.9v-8.54c40-7.51,65.26-43.4,69.07-104.33,4.06-67.59-20.28-120.3-68.94-129.76ZM802.35,205.66c-28.15-4.09-68.21-4.43-106.61,14.44-4.07-2.01-8.19-3.94-12.36-5.78,9.14-18.69,24.88-47.07,41.85-60.7,31.44,13.85,56.71,31.73,77.12,52.04ZM207.5,376.09c7.96-27.42,20.46-60.15,39.99-92.64,39.96-66.47,96.38-112.42,168.49-137.51-65.69,29.65-122.82,86.51-149.65,189.3-22.72,33.88-39.45,72.1-48.71,113.16v-45.01c0-10.43-3.82-19.97-10.13-27.3ZM812.82,315.38c13.77-21.41,20.58-46.86,23.96-66.81,26.55,41.56,39.93,87.7,48.16,128.85-5.65,7.14-9.03,16.16-9.03,25.97v45.01c-11.11-49.3-33.01-94.51-63.09-133.02Z"/>
-          </g>
-
-          <!-- Character Primary Layers -->
-          <g id="Layer_1">
-            
-            <!-- Headband Arc -->
-            <path id="headband-structure" class="st8" d="M922.52,485.17c-10.53,0-20.02-7.28-22.41-17.99-2.24-10.05-4.09-22.34-6.22-36.57-16.15-107.46-46.18-307.18-334.14-307.18-.92,0-1.82,0-2.75,0-142.23,1.2-246.4,55.03-309.51,160.02-47.9,79.68-53.51,160.75-53.56,161.56-.8,12.65-11.69,22.28-24.34,21.51-12.65-.78-22.29-11.64-21.53-24.29.22-3.7,6.03-91.62,59.05-180.79,31.43-52.86,72.93-95.16,123.36-125.72,62.55-37.91,138.67-57.5,226.24-58.24.97,0,1.95,0,2.92,0,140.22,0,243.18,44.52,306.17,132.37,52.35,72.99,65.09,157.81,73.53,213.94,2.01,13.38,3.75,24.93,5.64,33.42,2.76,12.39-5.05,24.67-17.44,27.42-1.68.37-3.36.55-5.01.55Z"/>
-            
-            <!-- Headphones Back Structure -->
-            <g id="layer-headphones-structure">
-              <path class="st3" d="M121.28,405.31c-48.66,9.46-72.99,62.18-68.94,129.76,4.06,64.88,32.44,101.38,77.05,105.43l-8.11-235.2h0Z"/>
-              <path class="st1" d="M969.31,410.83c48.66,9.46,72.99,62.18,68.94,129.76-4.06,64.88-32.44,101.38-77.05,105.43l8.11-235.2h0Z"/>
-            </g>
-
-            <!-- Face Circle Base -->
-            <circle class="st6" id="head-base" cx="546.77" cy="522.91" r="337.41"/>
-
-            <!-- Hair (Secondary animation applied) -->
-            <path id="character-hair" class="st4" d="M253.45,408.01s122.17-251.11,338.21-106.01c248.43,166.84,248.43-87.28,248.43-87.28,0,0-90.6-34.79-164.91,17.57,0,0,34.87-85.06,67.59-86.51,0,0-445.85-156.37-489.32,262.23h0Z"/>
-
-            <!-- Facial Features -->
-            <g id="layer-features">
-              
-              <!-- Eyebrows -->
-              <g id="layer-eyebrows">
-                <path id="eyebrow-left" class="st0 eyebrow-item" d="M344.69,398.66c32.44-30.64,68.03-36.5,106.78-17.57"/>
-                <path id="eyebrow-right" class="st0 eyebrow-item" d="M656.93,394.61c34.24-23.43,68.49-22.98,102.73,1.35"/>
-              </g>
-
-              <!-- Eyes & Pupils Group -->
-              <g id="eyes-pupil-group">
-                
-                <!-- Left Eye (Open with Specular Highlight) -->
-                <g id="eye-left-container" class="eye-container">
-                  <g id="eye-left-scale">
-                    <ellipse class="st10" cx="400.11" cy="518.96" rx="66.23" ry="74.34"/>
-                    <circle class="st11" cx="371.72" cy="485.17" r="20.28"/>
-                  </g>
-                </g>
-
-                <!-- Right Eye (Open, matching left eye in idle; can switch to wink) -->
-                <g id="eye-right-container" class="eye-container">
-                  <!-- Open Right Eye State -->
-                  <g id="eye-right-scale">
-                    <ellipse class="st10" cx="696.81" cy="518.96" rx="66.23" ry="74.34"/>
-                    <circle class="st11" cx="668.42" cy="485.17" r="20.28"/>
-                  </g>
-                  
-                  <!-- Original Winking Arc (used for wink mode or wink clicks) -->
-                  <path id="eye-right-wink" class="st7" d="M651.53,528.42c28.83-36.94,59.03-36.94,90.56,0" style="display: none;"/>
-                </g>
-
-              </g>
-
-              <!-- Mouth (Subtle happy smile) -->
-              <g id="mouth-group">
-                <path class="st7" d="M454.18,671.7c64.88,48.66,133.37,44.61,205.46-12.17"/>
-              </g>
-
-            </g>
-
-            <!-- Headphones Front Cushions -->
-            <g id="layer-headphones-front">
-              <rect class="st2" x="124.36" y="361.49" width="93.27" height="333.87" rx="31" ry="31"/>
-              <rect class="st5" x="875.91" y="361.49" width="93.27" height="333.87" rx="31" ry="31"/>
-            </g>
-
-          </g>
-        </g>
-      </svg>
-
-      <!-- Soft Ground Shadow -->
-      <div class="character-shadow"></div>
-
-    </div>
+    <!-- CTA FINAL -->
+    <section style="padding-top:0">
+      <div class="wrap">
+        <div class="cta-band reveal">
+          <img src="buddy_editor_camadas_editavel.svg" alt="" width="110" height="95">
+          <div>
+            <h2>Seu próximo episódio pode sair em minutos.</h2>
+            <p>Teste o Buddy por 7 dias, sem cartão. Se ele não te poupar horas, nem precisa voltar.</p>
+          </div>
+          <div class="btns">
+            <a class="btn btn-primary" href="#baixar">Começar grátis</a>
+          </div>
+        </div>
+      </div>
+    </section>
   </main>
 
-  <!-- Interactive Control Bar -->
-  <footer>
-    <div class="controls-panel">
-      
-      <!-- Blink Trigger -->
-      <button class="btn" id="btn-blink" title="Fazer piscar os olhos agora">
-        <span>👁️</span> Piscar
-      </button>
-
-      <!-- Wink Trigger -->
-      <button class="btn" id="btn-wink" title="Alternar piscadinha charmosa">
-        <span>😉</span> Piscar um olho
-      </button>
-
-      <!-- Pet / Cheer Reaction -->
-      <button class="btn" id="btn-pet" title="Fazer carinho no Buddy!">
-        <span>✨</span> Fazer Carinho
-      </button>
-
-      <div class="divider"></div>
-
-      <!-- Mouse Tracking Toggle -->
-      <button class="btn active" id="btn-gaze" title="Seguir o ponteiro do mouse com o olhar">
-        <span>👀</span> Seguir Cursor
-      </button>
-
-      <div class="divider"></div>
-
-      <!-- Speed Control -->
-      <div class="speed-group" title="Velocidade da respiração idle">
-        <button class="speed-btn" data-speed="5.5s">Calmo</button>
-        <button class="speed-btn active" data-speed="4s">Normal</button>
-        <button class="speed-btn" data-speed="2.6s">Ativo</button>
+  <footer class="footer">
+    <div class="wrap">
+      <div class="footer-grid">
+        <div>
+          <a class="brand" href="index.html"><img src="buddy_editor_camadas_editavel.svg" alt="" width="38" height="33"><span class="brand-text">Buddy Editor</span></a>
+          <p>O parceiro que corta, troca câmera e organiza sua timeline dentro do Premiere Pro, enquanto você cuida da parte criativa.</p>
+        </div>
+        <div>
+          <h4>Produto</h4>
+          <ul>
+            <li><a href="funcionalidades.html">Funcionalidades</a></li>
+            <li><a href="precos.html">Preços</a></li>
+            <li><a href="atualizacoes.html">Atualizações</a></li>
+            <li><a href="index.html#baixar">Baixar</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Módulos</h4>
+          <ul>
+            <li><a href="funcionalidades.html#podcast">Buddy Podcast</a></li>
+            <li><a href="funcionalidades.html#silences">Buddy Silences</a></li>
+            <li><a href="funcionalidades.html#zoom">Buddy Zoom</a></li>
+            <li><a href="funcionalidades.html#captions">Buddy Captions</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Legal</h4>
+          <ul>
+            <!-- TODO: criar as páginas (exigidas pela Paddle antes da aprovação do domínio) -->
+            <li><a href="#">Termos de uso</a></li>
+            <li><a href="#">Política de reembolso</a></li>
+            <li><a href="#">Privacidade</a></li>
+            <li><a href="#">Contato</a></li>
+          </ul>
+        </div>
       </div>
-
-    </div>
-
-    <div class="footer-note">
-      Personagem SVG animado em <span>Idle Position</span> • Ambos olhos abertos com reflexo e ciclo natural de piscadas
+      <div class="footer-bottom">
+        <span>© <span data-year>2026</span> Buddy Editor. Feito com 🧡 para editores.</span>
+        <span>Adobe e Premiere Pro são marcas da Adobe Inc. O Buddy Editor não é afiliado à Adobe.</span>
+      </div>
     </div>
   </footer>
 
-  <script>
-    (function() {
-      // Elements
-      const stage = document.getElementById('stage');
-      const characterWrap = document.getElementById('character-wrap');
-      const svg = document.getElementById('buddy-svg');
-      const pupilsGroup = document.getElementById('eyes-pupil-group');
-      const btnBlink = document.getElementById('btn-blink');
-      const btnWink = document.getElementById('btn-wink');
-      const btnPet = document.getElementById('btn-pet');
-      const btnGaze = document.getElementById('btn-gaze');
-      const speedBtns = document.querySelectorAll('.speed-btn');
-
-      // State
-      let gazeTrackingEnabled = true;
-      let isWinking = false;
-      let blinkTimeout = null;
-      let organicBlinkTimer = null;
-      let mouseX = 0, mouseY = 0;
-      let currentEyeX = 0, currentEyeY = 0;
-      let currentHeadTiltX = 0, currentHeadTiltY = 0;
-      let isMouseOver = false;
-
-      // -------------------------------------------------------------
-      // 1. ORGANIC RANDOM BLINK CONTROLLER
-      // -------------------------------------------------------------
-      // Adds random variation to the blinking (e.g. 2.5s to 5.5s, with double-blinks)
-      function triggerBlink(callback) {
-        if (isWinking) return;
-
-        svg.classList.remove('auto-blink');
-        svg.classList.add('is-blinking');
-
-        setTimeout(() => {
-          svg.classList.remove('is-blinking');
-          if (callback) callback();
-        }, 160);
-      }
-
-      function scheduleNextOrganicBlink() {
-        const nextInterval = 2800 + Math.random() * 3200; // between 2.8s and 6s
-        organicBlinkTimer = setTimeout(() => {
-          if (!isWinking) {
-            triggerBlink(() => {
-              // 30% chance of an immediate cute double-blink!
-              if (Math.random() < 0.3) {
-                setTimeout(() => {
-                  triggerBlink(scheduleNextOrganicBlink);
-                }, 140);
-              } else {
-                scheduleNextOrganicBlink();
-              }
-            });
-          } else {
-            scheduleNextOrganicBlink();
-          }
-        }, nextInterval);
-      }
-
-      // Start organic blink cycle
-      scheduleNextOrganicBlink();
-
-      // Manual Blink Button
-      btnBlink.addEventListener('click', (e) => {
-        e.stopPropagation();
-        if (isWinking) setWink(false);
-        triggerBlink();
-        playCuteSound(580, 720);
-      });
-
-      // -------------------------------------------------------------
-      // 2. WINK TOGGLE
-      // -------------------------------------------------------------
-      function setWink(state) {
-        isWinking = state;
-        if (isWinking) {
-          svg.classList.remove('auto-blink');
-          svg.classList.add('is-winking');
-          btnWink.classList.add('active');
-        } else {
-          svg.classList.remove('is-winking');
-          btnWink.classList.remove('active');
-          // Resume natural blink
-          svg.classList.add('auto-blink');
-        }
-      }
-
-      btnWink.addEventListener('click', (e) => {
-        e.stopPropagation();
-        setWink(!isWinking);
-        playCuteSound(isWinking ? 700 : 450, isWinking ? 880 : 380);
-      });
-
-      // -------------------------------------------------------------
-      // 3. PET / HAPPY BOUNCE REACTION
-      // -------------------------------------------------------------
-      function triggerReaction(x, y) {
-        svg.classList.add('is-reacting');
-        spawnParticles(x, y);
-        playCuteSound(520, 880, 'sine');
-
-        // Quick playful wink during bounce if not already winking
-        if (!isWinking) {
-          setTimeout(() => {
-            setWink(true);
-            setTimeout(() => {
-              setWink(false);
-            }, 550);
-          }, 150);
-        }
-
-        setTimeout(() => {
-          svg.classList.remove('is-reacting');
-        }, 650);
-      }
-
-      stage.addEventListener('click', (e) => {
-        const rect = stage.getBoundingClientRect();
-        const clickX = e.clientX || (rect.left + rect.width / 2);
-        const clickY = e.clientY || (rect.top + rect.height / 2);
-        triggerReaction(clickX, clickY);
-      });
-
-      btnPet.addEventListener('click', (e) => {
-        e.stopPropagation();
-        const rect = stage.getBoundingClientRect();
-        triggerReaction(rect.left + rect.width / 2, rect.top + rect.height / 2);
-      });
-
-      // Particles effect (Hearts, stars, music notes)
-      const emojis = ['✨', '💙', '⭐', '🎵', '💫', '🌸'];
-      function spawnParticles(x, y) {
-        const count = 5 + Math.floor(Math.random() * 4);
-        for (let i = 0; i < count; i++) {
-          const p = document.createElement('div');
-          p.className = 'particle';
-          p.innerText = emojis[Math.floor(Math.random() * emojis.length)];
-          p.style.left = `${x}px`;
-          p.style.top = `${y}px`;
-          p.style.setProperty('--dx', `${(Math.random() - 0.5) * 120}px`);
-          document.body.appendChild(p);
-
-          setTimeout(() => {
-            p.remove();
-          }, 950);
-        }
-      }
-
-      // -------------------------------------------------------------
-      // 4. GAZE & MOUSE TRACKING
-      // -------------------------------------------------------------
-      btnGaze.addEventListener('click', (e) => {
-        e.stopPropagation();
-        gazeTrackingEnabled = !gazeTrackingEnabled;
-        btnGaze.classList.toggle('active', gazeTrackingEnabled);
-        if (!gazeTrackingEnabled) {
-          // Reset gaze to center
-          pupilsGroup.style.transform = 'translate(0px, 0px)';
-          characterWrap.style.transform = 'rotateX(0deg) rotateY(0deg)';
-        }
-      });
-
-      window.addEventListener('mousemove', (e) => {
-        isMouseOver = true;
-        const rect = stage.getBoundingClientRect();
-        const stageCenterX = rect.left + rect.width / 2;
-        const stageCenterY = rect.top + rect.height / 2;
-
-        // Normalized offsets from center (-1 to 1)
-        mouseX = (e.clientX - stageCenterX) / (window.innerWidth / 2);
-        mouseY = (e.clientY - stageCenterY) / (window.innerHeight / 2);
-
-        // Clamp
-        mouseX = Math.max(-1, Math.min(1, mouseX));
-        mouseY = Math.max(-1, Math.min(1, mouseY));
-      });
-
-      window.addEventListener('mouseleave', () => {
-        isMouseOver = false;
-        mouseX = 0;
-        mouseY = 0;
-      });
-
-      // Smooth Animation Loop for Gaze & Parallax Lerp
-      function updateGaze() {
-        if (gazeTrackingEnabled) {
-          const targetEyeX = mouseX * 22; // max ±22px pupil travel
-          const targetEyeY = mouseY * 16; // max ±16px pupil travel
-          const targetTiltY = mouseX * 7;  // 3D head tilt in deg
-          const targetTiltX = -mouseY * 6;
-
-          // Smooth lerp
-          currentEyeX += (targetEyeX - currentEyeX) * 0.12;
-          currentEyeY += (targetEyeY - currentEyeY) * 0.12;
-          currentHeadTiltX += (targetTiltX - currentHeadTiltX) * 0.08;
-          currentHeadTiltY += (targetTiltY - currentHeadTiltY) * 0.08;
-
-          pupilsGroup.style.transform = `translate(${currentEyeX.toFixed(2)}px, ${currentEyeY.toFixed(2)}px)`;
-          characterWrap.style.transform = `rotateX(${currentHeadTiltX.toFixed(2)}deg) rotateY(${currentHeadTiltY.toFixed(2)}deg)`;
-        }
-        requestAnimationFrame(updateGaze);
-      }
-      requestAnimationFrame(updateGaze);
-
-      // -------------------------------------------------------------
-      // 5. SPEED SELECTOR
-      // -------------------------------------------------------------
-      speedBtns.forEach(btn => {
-        btn.addEventListener('click', (e) => {
-          e.stopPropagation();
-          speedBtns.forEach(b => b.classList.remove('active'));
-          btn.classList.add('active');
-          const speed = btn.getAttribute('data-speed');
-          document.documentElement.style.setProperty('--idle-duration', speed);
-        });
-      });
-
-      // -------------------------------------------------------------
-      // 6. SYNTHESIZED AUDIO FEEDBACK (Zero external files)
-      // -------------------------------------------------------------
-      let audioCtx = null;
-      function playCuteSound(startFreq, endFreq, type = 'sine') {
-        try {
-          if (!audioCtx) {
-            const AudioContext = window.AudioContext || window.webkitAudioContext;
-            if (AudioContext) audioCtx = new AudioContext();
-          }
-          if (!audioCtx || audioCtx.state === 'suspended') {
-            audioCtx && audioCtx.resume();
-          }
-          if (!audioCtx) return;
-
-          const osc = audioCtx.createOscillator();
-          const gain = audioCtx.createGain();
-
-          osc.type = type;
-          osc.frequency.setValueAtTime(startFreq, audioCtx.currentTime);
-          osc.frequency.exponentialRampToValueAtTime(endFreq, audioCtx.currentTime + 0.15);
-
-          gain.gain.setValueAtTime(0.08, audioCtx.currentTime);
-          gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.18);
-
-          osc.connect(gain);
-          gain.connect(audioCtx.destination);
-
-          osc.start();
-          osc.stop(audioCtx.currentTime + 0.19);
-        } catch (err) {
-          // Silent fallback if audio context not permitted
-        }
-      }
-
-    })();
-  </script>
+  <script src="js/buddy.js"></script>
+  <script src="js/site.js"></script>
 </body>
 </html>
