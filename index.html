@@ -14,6 +14,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/premiere.css">
 </head>
 <body>
   <div class="bg-deco" aria-hidden="true"></div>
@@ -28,8 +29,8 @@
         <ul class="nav-links"><li><a href="index.html" aria-current="page">Início</a></li><li><a href="funcionalidades.html">Funcionalidades</a></li><li><a href="precos.html">Preços</a></li><li><a href="atualizacoes.html">Atualizações</a></li></ul>
       </nav>
       <div class="nav-cta">
-        <a class="btn btn-ghost btn-sm" href="precos.html">Ver planos</a>
-        <a class="btn btn-primary btn-sm" href="index.html#baixar">Baixar grátis</a>
+        <a class="btn btn-ghost btn-sm nav-ig" href="https://instagram.com/buddy.plugin" target="_blank" rel="noopener" aria-label="Instagram @buddy.plugin"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><path d="M17.5 6.5h.01"/></svg></a>
+        <a class="btn btn-primary btn-sm" href="precos.html">Ver planos</a>
         <button class="nav-toggle" aria-label="Abrir menu" aria-expanded="false"><span></span></button>
       </div>
     </div>
@@ -41,50 +42,25 @@
       <div class="wrap">
         <div data-buddy data-hint data-greeting="Oi! Eu sou o Buddy 👋"></div>
 
-        <span class="eyebrow" style="margin-top:22px">Extensão para Adobe Premiere Pro</span>
+        <span class="eyebrow" style="margin-top:22px">Extensão para Adobe Premiere Pro no Windows</span>
         <h1>Você cria. <span class="hl">O Buddy edita</span> o trabalho chato.</h1>
-        <p class="lead">Um parceiro dentro do Premiere que escuta os microfones do seu podcast, troca a câmera de quem está falando e deixa a timeline pronta para você só lapidar. Tudo no seu PC, sem enviar nada para a nuvem.</p>
+        <p class="lead">Um parceiro dentro do Premiere que escuta os microfones, troca a câmera de quem está falando, alterna ângulos nas pausas da fala e deixa a timeline pronta para você só lapidar. Tudo no seu PC.</p>
         <div class="hero-ctas">
-          <a class="btn btn-primary" href="#baixar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="m7 10 5 5 5-5"/><path d="M12 15V3"/></svg> Baixar e testar grátis</a>
-          <a class="btn btn-ghost" href="#demo">Ver o Buddy trabalhando <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+          <a class="btn btn-primary" href="#demo">Ver o Buddy no Premiere <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+          <a class="btn btn-ghost" href="funcionalidades.html">Conhecer os módulos</a>
         </div>
         <div class="hero-meta">
-          <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg> 7 dias grátis, sem cartão</span>
-          <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg> Windows 10/11 · Premiere Pro 2022+</span>
+          <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg> Feito para Windows 10/11</span>
+          <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg> Premiere Pro 2022 ou mais novo</span>
           <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg> Backup automático antes de cada edição</span>
         </div>
+      </div>
+    </section>
 
-        <!-- DEMO: timeline fake mostrando o Buddy Podcast -->
-        <div class="demo reveal" id="demo">
-          <div class="tl" data-timeline>
-            <div class="tl-bar">
-              <div class="tl-title"><span class="tl-dots"><i></i><i></i><i></i></span> Sequência: <b>Podcast_Ep12</b></div>
-              <div class="tl-switch" role="group" aria-label="Comparar antes e depois">
-                <button data-mode="before" class="on">Antes</button>
-                <button data-mode="after">Depois do Buddy</button>
-              </div>
-            </div>
-            <div class="tl-body">
-              <div class="tl-tracks">
-                <div class="tl-ruler"><span>00:00</span><span>05:00</span><span>10:00</span><span>15:00</span><span>20:00</span></div>
-                <div class="tl-row"><div class="tl-label">V3 <em>Ana</em></div><div class="tl-lane" data-lane="ana"></div></div>
-                <div class="tl-row"><div class="tl-label">V2 <em>Beto</em></div><div class="tl-lane" data-lane="beto"></div></div>
-                <div class="tl-row"><div class="tl-label">V1 <em>Geral</em></div><div class="tl-lane" data-lane="wide"></div></div>
-                <div class="tl-row audio"><div class="tl-label">A1 <em>Mic</em></div><div class="tl-lane"><div class="wave ana" data-who="ana"></div></div></div>
-                <div class="tl-row audio"><div class="tl-label">A2 <em>Mic</em></div><div class="tl-lane"><div class="wave beto" data-who="beto"></div></div></div>
-                <div class="playhead"></div>
-              </div>
-              <div class="tl-monitor">
-                <div class="tl-screen"><span class="rec">PROGRAMA</span><span class="face"></span><span class="who">CAM 1 · Ana</span></div>
-                <div class="tl-stats">
-                  <div class="tl-stat"><b data-stat="cuts">0</b><span>cortes</span></div>
-                  <div class="tl-stat"><b data-stat="time">—</b><span>para editar</span></div>
-                </div>
-                <div class="tl-status"></div>
-              </div>
-            </div>
-          </div>
-        </div>
+    <!-- DEMO: Premiere no Windows + painel do Buddy -->
+    <section class="demo-section" id="demo">
+      <div class="wrap">
+        <div data-ppro-demo></div>
       </div>
     </section>
 
@@ -94,82 +70,80 @@
         <div class="section-head center reveal">
           <span class="eyebrow">Uma extensão, seis ajudantes</span>
           <h2>Um Buddy para cada parte <span class="hl-orange">repetitiva</span> da edição</h2>
-          <p class="lead">Tudo num único painel no Premiere. Comece pelo Podcast, que já está pronto, e ganhe os próximos módulos conforme forem lançados.</p>
+          <p class="lead">Tudo num único painel do Premiere, em abas. Cada módulo resolve uma tarefa chata do começo ao fim.</p>
         </div>
 
         <div class="modules">
           <article class="card module featured reveal">
             <div class="module-top">
               <div class="module-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><path d="M12 19v3"/></svg></div>
-              <span class="chip chip-live">Disponível</span>
             </div>
             <div class="feat-body">
               <div>
-                <h3><span>Módulo 1</span>Buddy Podcast</h3>
-                <p style="margin-top:10px">Corte multicâmera automático guiado por quem está falando. Você só diz qual microfone é de quem e qual câmera mostra cada pessoa. O Buddy escuta, decide e corta.</p>
+                <h3><span>Edição multicâmera automática</span>Buddy Podcast</h3>
+                <p style="margin-top:10px">Corta a timeline a cada troca de quem fala e coloca no ar a câmera de quem está falando. Você só diz qual microfone é de quem e qual câmera mostra cada pessoa. Nunca apaga mídia.</p>
               </div>
               <ul>
-                <li>O microfone mais alto ganha a câmera, então o vazamento entre mics nunca engana o Buddy</li>
-                <li>Calibra o volume de cada mic sozinho</li>
-                <li>Lê áudio multicanal igualzinho ao Premiere</li>
-                <li>Prévia completa antes de mexer na sua timeline</li>
-                <li>Nunca muda a duração da sequência</li>
+                <li>Quem está mais alto no próprio mic ganha a câmera; o vazamento entre mics é ignorado</li>
+                <li>Calibra a sensibilidade de cada microfone sozinho</li>
+                <li>Separa mics gravados no mesmo arquivo, igual ao Premiere</li>
+                <li>Plano mínimo, plano máximo e tolerância de pausa</li>
+                <li>Camadas em Pilha ou Linear, marcadores por falante</li>
               </ul>
             </div>
-            <div class="mini-preview" aria-label="Exemplo da prévia de análise">
-              <div class="mp-head"><span>Prévia da análise</span><b>6 cortes</b></div>
+            <div class="mini-preview" aria-label="Exemplo da prévia de análise do painel">
+              <div class="mp-head"><span>Prévia</span><b>6 cortes</b></div>
               <div class="mp-strip">
-                <i class="c-wide" style="flex:12"></i><i class="c-ana" style="flex:17"></i><i class="c-beto" style="flex:12"></i><i class="c-ana" style="flex:16"></i><i class="c-wide" style="flex:7"></i><i class="c-beto" style="flex:17"></i><i class="c-ana" style="flex:19"></i>
+                <i style="flex:6;background:#10b981"></i><i style="flex:18;background:#3b82f6"></i><i style="flex:13;background:#a855f7"></i><i style="flex:18;background:#3b82f6"></i><i style="flex:6;background:#10b981"></i><i style="flex:19;background:#a855f7"></i><i style="flex:20;background:#3b82f6"></i>
               </div>
-              <div class="mp-ruler"><span>00:00</span><span>10:00</span><span>20:00</span></div>
-              <div class="mp-legend"><span><i class="c-ana"></i>CAM 1 · Ana</span><span><i class="c-beto"></i>CAM 2 · Beto</span><span><i class="c-wide"></i>CAM 3 · Plano geral</span></div>
+              <div class="mp-legend"><span><i style="background:#3b82f6"></i>V3 · Ana</span><span><i style="background:#a855f7"></i>V2 · Beto</span><span><i style="background:#10b981"></i>V1 · Geral</span></div>
               <div class="mp-rows">
-                <div class="mp-row"><span>Ana</span><div class="mp-bar"><i class="c-ana" style="width:46%"></i></div><b>46%</b></div>
-                <div class="mp-row"><span>Beto</span><div class="mp-bar"><i class="c-beto" style="width:38%"></i></div><b>38%</b></div>
-                <div class="mp-row"><span>Conversa cruzada</span><div class="mp-bar"><i class="c-wide" style="width:6%"></i></div><b>6%</b></div>
-                <div class="mp-row"><span>Silêncio</span><div class="mp-bar"><i style="width:10%;background:#33415e"></i></div><b>10%</b></div>
+                <div class="mp-row"><span>Ana</span><div class="mp-bar"><i style="width:56%;background:#3b82f6"></i></div><b>56%</b></div>
+                <div class="mp-row"><span>Beto</span><div class="mp-bar"><i style="width:32%;background:#a855f7"></i></div><b>32%</b></div>
+                <div class="mp-row"><span>Falando juntos</span><div class="mp-bar"><i style="width:6%;background:#10b981"></i></div><b>6%</b></div>
+                <div class="mp-row"><span>Silêncio</span><div class="mp-bar"><i style="width:6%;background:#5f5f5f"></i></div><b>6%</b></div>
               </div>
             </div>
           </article>
 
-          <article class="card module is-soon reveal">
-            <div class="module-top"><div class="module-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="6" cy="6" r="3"/><path d="M8.12 8.12 12 12"/><path d="M20 4 8.12 15.88"/><circle cx="6" cy="18" r="3"/><path d="M14.8 14.8 20 20"/></svg></div><span class="chip chip-soon">Próximo</span></div>
-            <h3><span>Módulo 2</span>Buddy Silences</h3>
-            <p>Remove as pausas mortas de vídeos falados, com margem antes e depois da fala para nada soar cortado.</p>
-            <ul><li>Funciona com vários microfones ao mesmo tempo</li><li>Ripple delete ou lift, você escolhe</li></ul>
+          <article class="card module reveal">
+            <div class="module-top"><div class="module-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 13a2 2 0 0 0 2-2V7a2 2 0 0 1 4 0v13a2 2 0 0 0 4 0V4a2 2 0 0 1 4 0v13a2 2 0 0 0 4 0v-4a2 2 0 0 1 2-2"/></svg></div><span class="chip chip-free">Grátis</span></div>
+            <h3><span>Remove os silêncios</span>Buddy Silences</h3>
+            <p>Encontra as pausas mortas da fala e tira da timeline, deixando uma margem antes e depois para nada soar cortado.</p>
+            <ul><li>Vários microfones: só corta quando todos estão em silêncio</li><li>Ripple delete ou lift, você escolhe</li></ul>
           </article>
 
-          <article class="card module is-soon reveal">
+          <article class="card module reveal">
+            <div class="module-top"><div class="module-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 19H4a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2h5"/><path d="M13 5h7a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2h-5"/><circle cx="12" cy="12" r="3"/><path d="m18 22-3-3 3-3"/><path d="m6 2 3 3-3 3"/></svg></div></div>
+            <h3><span>Troca natural de ângulos</span>Buddy Angles</h3>
+            <p>Uma pessoa, várias câmeras. O Buddy alterna os ângulos em ordem aleatória, só nas pausas da fala, nunca no meio de uma palavra.</p>
+            <ul><li>Prefere fins de frase, usa micro pausas quando precisa</li><li>Câmera principal e "Gerar outra variação"</li></ul>
+          </article>
+
+          <article class="card module reveal">
             <div class="module-top"><div class="module-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/><path d="M11 8v6M8 11h6"/></svg></div><span class="chip chip-soon">Em breve</span></div>
-            <h3><span>Módulo 3</span>Buddy Zoom</h3>
-            <p>Punch-ins e zooms suaves automáticos para segurar a atenção, sem keyframe na mão.</p>
+            <h3><span>Zoom dinâmico</span>Buddy Zoom</h3>
+            <p>Alterna punch-ins e zooms suaves com keyframes entre os cortes para prender a atenção de quem assiste.</p>
             <ul><li>Corte seco ou rampa suave</li><li>Enquadra nos olhos (terço superior)</li></ul>
           </article>
 
-          <article class="card module is-soon reveal">
+          <article class="card module reveal">
             <div class="module-top"><div class="module-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 5 6 9H2v6h4l5 4V5Z"/><path d="m22 9-6 6M16 9l6 6"/></svg></div><span class="chip chip-soon">Em breve</span></div>
-            <h3><span>Módulo 4</span>Buddy Profanity</h3>
-            <p>Transcreve com IA local e censura palavrões ou termos que você escolher.</p>
-            <ul><li>Bip, mudo, corte ou só marcadores</li><li>Português, inglês e espanhol</li></ul>
+            <h3><span>Censura com IA local</span>Buddy Profanity</h3>
+            <p>Transcreve no seu PC e aplica bipe, mudo, corte ou marcador nas palavras bloqueadas.</p>
+            <ul><li>Sua própria lista de palavras</li><li>Português, inglês e espanhol</li></ul>
           </article>
 
-          <article class="card module is-soon reveal">
-            <div class="module-top"><div class="module-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m22 8-6 4 6 4V8Z"/><rect width="14" height="12" x="2" y="6" rx="2"/></svg></div><span class="chip chip-soon">Em breve</span></div>
-            <h3><span>Módulo 5</span>Buddy Angles</h3>
-            <p>Uma pessoa, várias câmeras: alterna os ângulos no ritmo certo para o vídeo não ficar parado.</p>
-            <ul><li>Por intervalo de tempo ou nos cortes existentes</li><li>Sequencial ou aleatório sem repetir</li></ul>
-          </article>
-
-          <article class="card module is-soon reveal">
+          <article class="card module reveal">
             <div class="module-top"><div class="module-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="18" height="14" x="3" y="5" rx="2"/><path d="M7 15h4M15 15h2M7 11h2M13 11h4"/></svg></div><span class="chip chip-soon">Em breve</span></div>
-            <h3><span>Módulo 6</span>Buddy Captions</h3>
-            <p>Legendas dinâmicas palavra por palavra, com destaque na palavra falada.</p>
-            <ul><li>SRT ou template animado (.mogrt)</li><li>Cores, posição e caixa alta ajustáveis</li></ul>
+            <h3><span>Legendas palavra por palavra</span>Buddy Captions</h3>
+            <p>Legendas com transcrição local e paginação inteligente, como SRT ou template animado.</p>
+            <ul><li>Destaque na palavra falada</li><li>Cores, posição e caixa alta ajustáveis</li></ul>
           </article>
         </div>
 
         <div class="center-x" style="margin-top:36px">
-          <a class="btn btn-ghost" href="funcionalidades.html">Ver todos os detalhes <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+          <a class="btn btn-ghost" href="funcionalidades.html">Ver todas as funções <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
         </div>
       </div>
     </section>
@@ -182,76 +156,72 @@
           <h2>Ele mexe na sua timeline com <span class="hl">cuidado de amigo</span></h2>
         </div>
         <div class="promises">
-          <div class="card promise reveal"><div class="p-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg></div><h3>Backup antes de tudo</h3><p>Antes de qualquer corte, o Buddy duplica sua sequência. Não gostou? A original está lá, intacta.</p></div>
-          <div class="card promise reveal"><div class="p-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/><path d="M15 2v2M15 20v2M2 15h2M2 9h2M20 15h2M20 9h2M9 2v2M9 20v2"/></svg></div><h3>100% no seu PC</h3><p>FFmpeg embutido e IA local. Seus episódios nunca saem da sua máquina, e funciona offline.</p></div>
-          <div class="card promise reveal"><div class="p-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg></div><h3>Prévia antes de aplicar</h3><p>Veja quantos cortes, quanto cada um falou e a mini timeline colorida antes de clicar em aplicar.</p></div>
-          <div class="card promise reveal"><div class="p-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></div><h3>Fala sua língua</h3><p>Interface em português e inglês, seguindo o idioma do seu Premiere automaticamente.</p></div>
+          <div class="card promise reveal"><div class="p-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg></div><h3>Backup antes de tudo</h3><p>Antes de qualquer corte, o Buddy duplica sua sequência e diz o nome da cópia. Não gostou? A original está lá.</p></div>
+          <div class="card promise reveal"><div class="p-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/><path d="M15 2v2M15 20v2M2 15h2M2 9h2M20 15h2M20 9h2M9 2v2M9 20v2"/></svg></div><h3>100% no seu PC</h3><p>FFmpeg embutido e análise local. Seus vídeos nunca saem da sua máquina.</p></div>
+          <div class="card promise reveal"><div class="p-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg></div><h3>Prévia antes de aplicar</h3><p>Veja quantos cortes, a barra colorida da timeline e o tempo de cada câmera antes de clicar em aplicar.</p></div>
+          <div class="card promise reveal"><div class="p-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></div><h3>Fala sua língua</h3><p>Painel em português e inglês, seguindo o idioma do seu Premiere automaticamente.</p></div>
         </div>
       </div>
     </section>
 
-    <!-- COMO FUNCIONA / BAIXAR -->
-    <section id="baixar">
+    <!-- COMO FUNCIONA -->
+    <section>
       <div class="wrap">
         <div class="section-head center reveal">
-          <span class="eyebrow">Do download ao primeiro corte</span>
+          <span class="eyebrow">Do painel ao primeiro corte</span>
           <h2>Três passos e o Buddy já está trabalhando</h2>
         </div>
         <div class="steps">
           <div class="card step reveal">
-            <h3>Instale em um minuto</h3>
-            <p>Baixe o <code>BuddyEditor.zxp</code> e solte no ZXP Installer (gratuito). Feche o Premiere antes.</p>
-          </div>
-          <div class="card step reveal">
             <h3>Abra no Premiere</h3>
-            <p>Vá em <code>Janela › Extensões › Buddy Editor</code>. O painel termina a configuração sozinho.</p>
+            <p>Depois de instalado, o Buddy fica em <code>Janela › Extensões › Buddy Editor</code>, ao lado dos seus painéis.</p>
           </div>
           <div class="card step reveal">
-            <h3>Analise e aplique</h3>
-            <p>Diga de quem é cada mic e câmera, clique em Analisar, confira a prévia e aplique. Pronto.</p>
+            <h3>Diga quem é quem</h3>
+            <p>Escolha a aba do módulo, diga de quem é cada microfone e câmera (ou quais trilhas são ângulos) e clique em <code>Analisar áudio</code>.</p>
           </div>
-        </div>
-        <div class="center-x" style="margin-top:40px; gap:14px; flex-wrap:wrap">
-          <!-- TODO: apontar para o .zxp da última versão (GitHub Releases: buddy-editor-releases) -->
-          <a class="btn btn-primary" href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="m7 10 5 5 5-5"/><path d="M12 15V3"/></svg> Baixar Buddy Editor v1.0.0</a>
-          <a class="btn btn-ghost" href="https://aescripts.com/learn/zxp-installer/" target="_blank" rel="noopener">Pegar o ZXP Installer</a>
+          <div class="card step reveal">
+            <h3>Confira e aplique</h3>
+            <p>Veja a prévia, ajuste as regras se quiser e clique em <code>Aplicar cortes na timeline</code>. O backup é criado sozinho.</p>
+          </div>
         </div>
       </div>
     </section>
 
+
     <!-- FAQ -->
-    <section>
+    <section style="padding-top:0">
       <div class="wrap">
         <div class="section-head center reveal">
           <span class="eyebrow">Perguntas frequentes</span>
           <h2>Ficou alguma dúvida?</h2>
         </div>
         <div class="faq reveal">
-          <details><summary>Funciona no Mac?</summary><p>Ainda não. Hoje o Buddy roda no Windows 10/11 (64 bits) com Premiere Pro 2022 ou mais novo. A versão para macOS está no plano. Acompanhe em <a class="hl" href="atualizacoes.html">Atualizações</a>.</p></details>
-          <details><summary>O Buddy pode estragar meu projeto?</summary><p>Antes de qualquer alteração ele cria uma cópia de backup da sequência e mostra o nome dela no resultado. O Buddy Podcast também nunca apaga tempo da timeline: ele corta e liga/desliga clipes, então a duração fica idêntica.</p></details>
+          <details><summary>Funciona no Mac?</summary><p>Não. O Buddy é feito para Windows 10/11 (64 bits) com Premiere Pro 2022 ou mais novo.</p></details>
+          <details><summary>O Buddy pode estragar meu projeto?</summary><p>Antes de qualquer alteração ele cria uma cópia de segurança da sequência e mostra o nome dela no resultado. O Podcast e o Angles nunca apagam tempo da timeline: eles cortam e ligam/desligam clipes, então a duração fica igual.</p></details>
           <details><summary>Meus microfones estão todos num arquivo estéreo. E agora?</summary><p>Sem problema. O Buddy lê os canais do arquivo do mesmo jeito que o Premiere ("Ch. 1", "Ch. 2"…) e separa cada mic sozinho. Se dois mics receberem o mesmo áudio, ele avisa e corrige com um clique.</p></details>
-          <details><summary>Preciso de uma placa de vídeo boa?</summary><p>Para o Buddy Podcast, não: ele só analisa o volume do áudio e é bem leve. Os módulos com IA (Profanity e Captions) vão rodar mais rápido com uma placa NVIDIA, mas também funcionam no processador.</p></details>
-          <details><summary>Quanto custa?</summary><p>Você testa tudo por 7 dias grátis. Depois, escolhe só o Buddy Podcast ou o Combo com todos os módulos. Veja a <a class="hl" href="precos.html">página de preços</a>.</p></details>
+          <details><summary>Preciso de uma placa de vídeo boa?</summary><p>Para o Podcast, o Silences e o Angles, não: eles analisam o áudio e são leves. Os módulos com IA (Profanity e Captions) vão rodar mais rápido com uma placa NVIDIA, mas também funcionam no processador.</p></details>
+          <details><summary>Quanto vai custar?</summary><p>O Buddy Silences é grátis. Os planos Mensal e Anual, com todos os módulos, ainda não têm preço. Siga o <a class="hl" href="https://instagram.com/buddy.plugin" target="_blank" rel="noopener">@buddy.plugin</a> no Instagram para saber primeiro.</p></details>
         </div>
       </div>
     </section>
-
-    <!-- CTA FINAL -->
     <section style="padding-top:0">
       <div class="wrap">
         <div class="cta-band reveal">
           <img src="buddy_editor_camadas_editavel.svg" alt="" width="110" height="95">
           <div>
-            <h2>Seu próximo episódio pode sair em minutos.</h2>
-            <p>Teste o Buddy por 7 dias, sem cartão. Se ele não te poupar horas, nem precisa voltar.</p>
+            <h2>Acompanhe o Buddy de perto</h2>
+            <p>Novidades, bastidores e o lançamento dos planos, primeiro no Instagram.</p>
           </div>
           <div class="btns">
-            <a class="btn btn-primary" href="#baixar">Começar grátis</a>
+            <a class="btn btn-primary" href="https://instagram.com/buddy.plugin" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><path d="M17.5 6.5h.01"/></svg> Seguir @buddy.plugin</a>
+            <a class="btn btn-ghost" href="precos.html">Ver planos</a>
           </div>
         </div>
       </div>
     </section>
   </main>
+  <script src="js/premiere-demo.js" defer></script>
 
   <footer class="footer">
     <div class="wrap">
@@ -259,6 +229,7 @@
         <div>
           <a class="brand" href="index.html"><img src="buddy_editor_camadas_editavel.svg" alt="" width="38" height="33"><span class="brand-text">Buddy Editor</span></a>
           <p>O parceiro que corta, troca câmera e organiza sua timeline dentro do Premiere Pro, enquanto você cuida da parte criativa.</p>
+          <a class="ig-link" href="https://instagram.com/buddy.plugin" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><path d="M17.5 6.5h.01"/></svg> @buddy.plugin</a>
         </div>
         <div>
           <h4>Produto</h4>
@@ -266,7 +237,6 @@
             <li><a href="funcionalidades.html">Funcionalidades</a></li>
             <li><a href="precos.html">Preços</a></li>
             <li><a href="atualizacoes.html">Atualizações</a></li>
-            <li><a href="index.html#baixar">Baixar</a></li>
           </ul>
         </div>
         <div>
@@ -274,8 +244,8 @@
           <ul>
             <li><a href="funcionalidades.html#podcast">Buddy Podcast</a></li>
             <li><a href="funcionalidades.html#silences">Buddy Silences</a></li>
+            <li><a href="funcionalidades.html#angles">Buddy Angles</a></li>
             <li><a href="funcionalidades.html#zoom">Buddy Zoom</a></li>
-            <li><a href="funcionalidades.html#captions">Buddy Captions</a></li>
           </ul>
         </div>
         <div>
@@ -285,7 +255,7 @@
             <li><a href="#">Termos de uso</a></li>
             <li><a href="#">Política de reembolso</a></li>
             <li><a href="#">Privacidade</a></li>
-            <li><a href="#">Contato</a></li>
+            <li><a href="https://instagram.com/buddy.plugin" target="_blank" rel="noopener">Contato (Instagram)</a></li>
           </ul>
         </div>
       </div>
