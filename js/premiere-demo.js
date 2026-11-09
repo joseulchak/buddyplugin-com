@@ -33,13 +33,11 @@
   function ic(n, sw) { return '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="' + (sw || 1.75) + '" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' + P[n] + "</svg>"; }
 
   /* ---------- Módulos (mesma ordem e textos do painel) ---------- */
-  var MODS = [
+  var MODS = [ // abas visíveis no painel 4.0.1 (Palavrões e Legendas ocultas)
     { id: "podcast", icon: "mic", tab: "Podcast", name: "Buddy Podcast" },
-    { id: "silences", icon: "wave", tab: "Silêncios", name: "Buddy Silences", tag: "Remove os silêncios", desc: "Detecta pausas silenciosas com o FFmpeg e remove (ripple delete) ou levanta (lift) os trechos, com margem configurável." },
-    { id: "zoom", icon: "zoom", tab: "Zoom", name: "Buddy Zoom", tag: "Zoom dinâmico", desc: "Alterna punch-ins e zooms suaves com keyframes entre os cortes para prender a atenção de quem assiste." },
-    { id: "profanity", icon: "warnmsg", tab: "Palavrões", name: "Buddy Profanity", tag: "Censura com IA local", desc: "Transcreve localmente com o Whisper e aplica bipe, mudo, corte ou marcador nas palavras bloqueadas." },
-    { id: "angles", icon: "switchcam", tab: "Ângulos", name: "Buddy Angles" },
-    { id: "captions", icon: "captions", tab: "Legendas", name: "Buddy Captions", tag: "Legendas palavra por palavra", desc: "Legendas com Whisper local e paginação inteligente, exportadas como SRT ou MOGRT animado." }
+    { id: "silences", icon: "wave", tab: "Silêncios", name: "Buddy Silences", tag: "Remove os silêncios", desc: "Encontra as pausas silenciosas de uma trilha de áudio e corta essas pausas de todas as trilhas destrancadas, deixando um respiro antes e depois da fala." },
+    { id: "zoom", icon: "zoom", tab: "Zoom", name: "Buddy Zoom", tag: "Zooms automáticos", desc: "Zooms automáticos nos cortes, na fala e na ênfase da voz, com o seu ponto de ancoragem, intervalo de zoom e estilo." },
+    { id: "angles", icon: "switchcam", tab: "Ângulos", name: "Buddy Angles" }
   ];
   var PALETTE = ["#3b82f6", "#a855f7", "#10b981"];
 
@@ -118,7 +116,7 @@
               '<span class="bd-icon" title="Atualizar sequência">' + ic("refresh") + '</span><span class="bd-icon" title="Configurações">' + ic("settings") + "</span></div>" +
             '<nav class="bd-tabs" data-tabs></nav>' +
             '<div class="bd-main" data-main></div>' +
-            '<div class="bd-status"><span><i class="dot" style="background:#3fb950"></i>Premiere 25.0.0</span><span><i class="dot" style="background:#3fb950"></i>CUDA</span><span class="ver">v2.0.3</span></div>' +
+            '<div class="bd-status"><span><i class="dot" style="background:#3fb950"></i>Premiere 25.0.0</span><span><i class="dot" style="background:#3fb950"></i>CUDA</span><span class="ver">v4.0.1</span></div>' +
           "</div></div></div>" +
       "</div>" +
     "</div>" +

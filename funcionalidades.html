@@ -4,10 +4,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Funcionalidades · Buddy Editor</title>
-  <meta name="description" content="Conheça os módulos do Buddy Editor: Podcast, Silences, Zoom, Profanity, Angles e Captions.">
+  <meta name="description" content="Conheça os módulos do Buddy Editor: Podcast, Silences, Zoom e Angles.">
   <meta name="theme-color" content="#070b16">
   <meta property="og:title" content="Funcionalidades · Buddy Editor">
-  <meta property="og:description" content="Conheça os módulos do Buddy Editor: Podcast, Silences, Zoom, Profanity, Angles e Captions.">
+  <meta property="og:description" content="Conheça os módulos do Buddy Editor: Podcast, Silences, Zoom e Angles.">
   <meta property="og:type" content="website">
   <link rel="icon" type="image/svg+xml" href="buddy_editor_camadas_editavel.svg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -41,7 +41,7 @@
       <div class="wrap">
         <div data-buddy data-size="sm" data-greeting="Deixa que eu te mostro tudo!"></div>
         <span class="eyebrow" style="margin-top:16px">Funcionalidades</span>
-        <h1>Seis ajudantes, <span class="hl">um painel</span> só</h1>
+        <h1>Quatro ajudantes, <span class="hl">um painel</span> só</h1>
         <p class="lead">Cada módulo cuida de uma tarefa chata da edição. Todos vivem no mesmo painel do Premiere, criam um backup da sequência antes de cortar e rodam no seu computador.</p>
       </div>
     </section>
@@ -51,10 +51,8 @@
         <nav class="feat-nav" aria-label="Módulos">
           <a href="#podcast" class="active">Buddy Podcast</a>
           <a href="#silences">Buddy Silences <small class="live">grátis</small></a>
-          <a href="#angles">Buddy Angles</a>
           <a href="#zoom">Buddy Zoom</a>
-          <a href="#profanity">Buddy Profanity</a>
-          <a href="#captions">Buddy Captions</a>
+          <a href="#angles">Buddy Angles</a>
           <a href="#requisitos">Requisitos</a>
         </nav>
 
@@ -90,12 +88,36 @@
               <div class="module-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 13a2 2 0 0 0 2-2V7a2 2 0 0 1 4 0v13a2 2 0 0 0 4 0V4a2 2 0 0 1 4 0v13a2 2 0 0 0 4 0v-4a2 2 0 0 1 2-2"/></svg></div>
               <div><span class="chip chip-free">Grátis</span><h2>Buddy Silences</h2></div>
             </header>
-            <p>Tira as pausas mortas de vídeos falados (talking head, aulas, vlogs) sem deixar a fala com cara de picotada.</p>
+            <p>Remove as pausas de um vídeo de uma pessoa falando. O Buddy procura os silêncios na trilha da voz e corta todas as trilhas destrancadas nos mesmos pontos, para tudo continuar sincronizado. Funciona sem ativação.</p>
             <div class="fd-grid">
-              <div class="fd-item"><h4><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></i>Limite e duração ajustáveis</h4><p>Defina o que conta como silêncio (de −60 a −15 dB) e a pausa mínima (de 0,1 a 2 s).</p></div>
-              <div class="fd-item"><h4><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></i>Respiro antes e depois</h4><p>Margens separadas antes e depois da fala para os cortes soarem naturais.</p></div>
-              <div class="fd-item"><h4><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></i>Vários microfones</h4><p>Em podcasts, só remove a pausa quando todos os mics estão em silêncio ao mesmo tempo.</p></div>
-              <div class="fd-item"><h4><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></i>Tudo sincronizado</h4><p>Corta todas as trilhas destravadas juntas, com ripple delete ou lift.</p></div>
+              <div class="fd-item"><h4><i>1</i>Nível do silêncio</h4><p>Tudo abaixo do nível escolhido (padrão −38 dB) conta como silêncio. Analisa a trilha que você escolher, A1 por padrão.</p></div>
+              <div class="fd-item"><h4><i>2</i>Menor silêncio a remover</h4><p>Pausas menores que isso ficam no vídeo (padrão 300 ms), para a fala não ficar picotada.</p></div>
+              <div class="fd-item"><h4><i>3</i>Respiro antes e depois</h4><p>Reguladores separados, em milissegundos, para o espaço que fica no fim da frase e antes da próxima começar.</p></div>
+              <div class="fd-item"><h4><i>4</i>Sons curtos entre silêncios</h4><p>Um "é", um estalo ou barulho de boca sozinho no meio de uma pausa sai junto com ela. Ligado por padrão.</p></div>
+              <div class="fd-item"><h4><i>5</i>O que fazer com os silêncios</h4><p>Cortar e ripple delete (fecha os buracos), cortar e apagar (deixa os buracos) ou somente cortar, para você revisar.</p></div>
+              <div class="fd-item"><h4><i>6</i>Fade de áudio</h4><p>Fade curto opcional só no áudio de cada corte, para não dar estalo. O vídeo continua em corte seco.</p></div>
+              <div class="fd-item"><h4><i>7</i>Sequência inteira ou Entrada/Saída</h4><p>Limpe o vídeo todo ou só o trecho entre a Entrada e a Saída da sequência.</p></div>
+              <div class="fd-item"><h4><i>8</i>Prévia antes de aplicar</h4><p>Na barra, azul fica e amarelo sai. Mostra o número de silêncios, o tempo removido e a duração antes e depois.</p></div>
+            </div>
+            <div class="fd-note"><b>Dica do Buddy:</b> rode o Silences como primeiro passo da edição, antes de música, b-roll ou lettering.</div>
+          </article>
+
+          <!-- ZOOM -->
+          <article class="card feature-detail" id="zoom">
+            <header>
+              <div class="module-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/><path d="M11 8v6M8 11h6"/></svg></div>
+              <div><h2>Buddy Zoom</h2></div>
+            </header>
+            <p>Zooms automáticos para dar ritmo a vídeos de uma pessoa falando. Os zooms são keyframes de Escala e Posição no efeito Movimento, então continuam editáveis. Nada é cortado ou apagado, e a duração não muda.</p>
+            <div class="fd-grid">
+              <div class="fd-item"><h4><i>1</i>Três gatilhos</h4><p>Nos cortes da timeline (sempre ligado), quando a fala recomeça depois de uma pausa e na ênfase da voz, com o zoom mais forte.</p></div>
+              <div class="fd-item"><h4><i>2</i>Ritmo de Calmo a Intenso</h4><p>Mais intenso = zooms mais frequentes, mais rápidos e um pouco mais fortes.</p></div>
+              <div class="fd-item"><h4><i>3</i>Ponto de ancoragem</h4><p>Clique na imagem do quadro para escolher o ponto que fica parado. A caixa tracejada mostra o que fica na tela no zoom máximo.</p></div>
+              <div class="fd-item"><h4><i>4</i>Zoom mínimo e máximo</h4><p>De 101% a 200% (padrão 110% e 130%). Atalhos para Centro e Rosto (terço superior).</p></div>
+              <div class="fd-item"><h4><i>5</i>Jump cut, Suave e Snap-in</h4><p>Instantâneo, com entrada e saída suavizadas, ou entrada animada rápida. Marque um ou mais e o Buddy mistura.</p></div>
+              <div class="fd-item"><h4><i>6</i>Câmera na mão</h4><p>Movimento sutil opcional durante o zoom, sem mostrar as bordas da imagem.</p></div>
+              <div class="fd-item"><h4><i>7</i>Gráficos ficam parados</h4><p>Os zooms valem para a trilha-alvo e as de baixo. Lower thirds e b-roll numa trilha acima não se mexem.</p></div>
+              <div class="fd-item"><h4><i>8</i>Prévia e variações</h4><p>Cada zoom aparece colorido pelo estilo na barra da timeline. "Gerar outra variação" sorteia outra versão.</p></div>
             </div>
           </article>
 
@@ -110,56 +132,11 @@
               <div class="fd-item"><h4><i>1</i>Nunca corta uma palavra</h4><p>A troca acontece num silêncio da voz: no fim de uma frase ou numa micro pausa entre palavras, sempre no ponto mais silencioso.</p></div>
               <div class="fd-item"><h4><i>2</i>Prefere fim de frase</h4><p>Dentro da duração do plano, o Buddy usa primeiro um fim de frase e só usa micro pausa quando não houver.</p></div>
               <div class="fd-item"><h4><i>3</i>Plano mínimo e máximo</h4><p>Padrão de 3 a 10 segundos. O Buddy sorteia um tempo nesse intervalo e troca na pausa mais próxima.</p></div>
-              <div class="fd-item"><h4><i>4</i>Câmera principal</h4><p>Opcional: a câmera principal volta ao ar depois de cada outro ângulo, então fica mais tempo na tela.</p></div>
+              <div class="fd-item"><h4><i>4</i>Nomes e câmera principal</h4><p>Dê um nome a cada ângulo (aberto, fechado, lateral…). Opcional: a câmera principal volta ao ar depois de cada outro ângulo.</p></div>
               <div class="fd-item"><h4><i>5</i>Gerar outra variação</h4><p>Não gostou da ordem? Um clique sorteia nova ordem e novos tempos, sempre nas pausas. A prévia e o resultado aplicado são idênticos.</p></div>
               <div class="fd-item"><h4><i>6</i>Calibração automática</h4><p>O limite de silêncio da voz é calibrado a cada análise, medindo o ruído da sala e o nível da fala.</p></div>
               <div class="fd-item"><h4><i>7</i>Mesmas escolhas do Podcast</h4><p>Pilha ou Linear, desativar ou excluir câmeras inativas, cortar só as trilhas que mudam, desvincular áudio e vídeo e apagar trilhas vazias.</p></div>
               <div class="fd-item"><h4><i>8</i>Prévia completa</h4><p>Número de cortes, barra colorida por ângulo, tempo e porcentagem de cada câmera, fins de frase e micro pausas encontrados e plano médio.</p></div>
-            </div>
-          </article>
-
-          <!-- ZOOM -->
-          <article class="card feature-detail" id="zoom">
-            <header>
-              <div class="module-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/><path d="M11 8v6M8 11h6"/></svg></div>
-              <div><h2>Buddy Zoom</h2></div>
-            </header>
-            <p>Punch-ins e zooms suaves automáticos para segurar a retenção do público. Não precisa de IA nem de downloads extras.</p>
-            <div class="fd-grid">
-              <div class="fd-item"><h4><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></i>Corte seco ou rampa</h4><p>Zoom instantâneo ou uma rampa suave de 6 quadros com ease-in.</p></div>
-              <div class="fd-item"><h4><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></i>Intensidade sob controle</h4><p>Escala de 105% a 150%, alternando com o plano normal.</p></div>
-              <div class="fd-item"><h4><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></i>Quando aplicar</h4><p>A cada N cortes ou a cada X segundos.</p></div>
-              <div class="fd-item"><h4><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></i>Enquadra nos olhos</h4><p>Centro ou terço superior, para o rosto continuar bem posicionado.</p></div>
-            </div>
-          </article>
-
-          <!-- PROFANITY -->
-          <article class="card feature-detail" id="profanity">
-            <header>
-              <div class="module-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 5 6 9H2v6h4l5 4V5Z"/><path d="m22 9-6 6M16 9l6 6"/></svg></div>
-              <div><h2>Buddy Profanity</h2></div>
-            </header>
-            <p>Transcrição com IA (Whisper) rodando no seu PC para encontrar e censurar palavrões ou qualquer termo da sua lista.</p>
-            <div class="fd-grid">
-              <div class="fd-item"><h4><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></i>Quatro jeitos de censurar</h4><p>Bip, mudo, corte com ripple ou só marcadores vermelhos para você revisar.</p></div>
-              <div class="fd-item"><h4><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></i>Sua lista, suas regras</h4><p>Dicionário pronto mais palavras extras para bloquear ou liberar.</p></div>
-              <div class="fd-item"><h4><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></i>Três idiomas</h4><p>Português, inglês e espanhol.</p></div>
-              <div class="fd-item"><h4><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></i>Placa NVIDIA opcional</h4><p>Usa a GPU (CUDA) quando tem, e o processador quando não tem.</p></div>
-            </div>
-          </article>
-
-          <!-- CAPTIONS -->
-          <article class="card feature-detail" id="captions">
-            <header>
-              <div class="module-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="18" height="14" x="3" y="5" rx="2"/><path d="M7 15h4M15 15h2M7 11h2M13 11h4"/></svg></div>
-              <div><h2>Buddy Captions</h2></div>
-            </header>
-            <p>Legendas dinâmicas palavra por palavra, com a palavra falada em destaque, no estilo dos vídeos curtos.</p>
-            <div class="fd-grid">
-              <div class="fd-item"><h4><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></i>Paginação inteligente</h4><p>Quebra as linhas por número de palavras, caracteres, pontuação e pausas.</p></div>
-              <div class="fd-item"><h4><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></i>SRT ou animado</h4><p>Gera uma trilha de legenda .srt ou usa um template .mogrt com destaque animado.</p></div>
-              <div class="fd-item"><h4><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></i>Visual ajustável</h4><p>Cor principal, cor de destaque, posição vertical e caixa alta.</p></div>
-              <div class="fd-item"><h4><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></i>Transcrição local</h4><p>Mesma IA local do Profanity, sem mandar seu áudio para lugar nenhum.</p></div>
             </div>
           </article>
 
@@ -173,7 +150,7 @@
               <div class="card req"><span>Sistema</span><b>Windows 10/11</b><p>64 bits. Só Windows por enquanto.</p></div>
               <div class="card req"><span>Programa</span><b>Premiere Pro 2022+</b><p>Versão 22.0 ou mais nova.</p></div>
               <div class="card req"><span>Instalador</span><b>ZXP Installer</b><p>Gratuito, da aescripts.</p></div>
-              <div class="card req"><span>Opcional</span><b>Placa NVIDIA</b><p>Acelera os módulos com IA.</p></div>
+              <div class="card req"><span>Incluído</span><b>FFmpeg</b><p>Vem junto com o Buddy, nada para baixar.</p></div>
             </div>
           </div>
         </div>
@@ -219,8 +196,8 @@
           <ul>
             <li><a href="funcionalidades.html#podcast">Buddy Podcast</a></li>
             <li><a href="funcionalidades.html#silences">Buddy Silences</a></li>
-            <li><a href="funcionalidades.html#angles">Buddy Angles</a></li>
             <li><a href="funcionalidades.html#zoom">Buddy Zoom</a></li>
+            <li><a href="funcionalidades.html#angles">Buddy Angles</a></li>
           </ul>
         </div>
         <div>

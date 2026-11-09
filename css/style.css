@@ -635,3 +635,18 @@ section { padding: clamp(56px, 7vw, 96px) 0; position: relative; }
 .rel-link { display: inline-block; margin-top: 14px; font-size: 13px; font-weight: 700; color: var(--cyan); }
 .rel-link:hover { text-decoration: underline; }
 .release.major::before { background: var(--grad-hair); border-color: var(--ink); transform: rotate(45deg); }
+
+/* v3: Podcast em destaque na linha inteira, 3 módulos embaixo */
+.module.featured { grid-column: 1 / -1; grid-row: auto; }
+.module.featured .feat-body { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1.1fr); gap: 26px; }
+.module.featured .mini-preview { margin-top: 0; }
+@media (max-width: 960px) {
+  .module.featured { grid-column: 1 / -1; }
+  .module.featured .feat-body { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
+  .module.featured .mini-preview { grid-column: 1 / -1; }
+  .modules > .module:last-child:nth-child(even) { grid-column: 1 / -1; }
+}
+@media (max-width: 600px) {
+  .module.featured .feat-body { grid-template-columns: minmax(0, 1fr); }
+  .modules > .module:last-child:nth-child(even) { grid-column: auto; }
+}
