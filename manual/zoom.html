@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Buddy Zoom · Manual do Buddy Editor</title>
+  <meta name="description" content="O Buddy Zoom adiciona zooms automáticos para dar ritmo a vídeos de uma pessoa falando. Os zooms são keyframes de Escala e Posição no efeito Movimento, entã">
+  <meta name="theme-color" content="#070b16">
+  <link rel="alternate" hreflang="pt-BR" href="zoom.html">
+  <link rel="alternate" hreflang="en" href="en/zoom.html">
+  <link rel="icon" type="image/svg+xml" href="../buddy_editor_camadas_editavel.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="assets/manual.css">
+</head>
+<body class="docs">
+  <div class="bg-deco" aria-hidden="true"></div>
+  <header class="nav">
+    <div class="wrap nav-inner">
+      <a class="brand" href="../index.html" aria-label="Buddy Editor">
+        <img src="../buddy_editor_camadas_editavel.svg" alt="" width="38" height="33">
+        <span class="brand-text">Buddy Editor<small>para Premiere Pro</small></span>
+      </a>
+      <nav aria-label="Principal">
+        <ul class="nav-links"><li><a href="../index.html">Início</a></li><li><a href="../funcionalidades.html">Funcionalidades</a></li><li><a href="../precos.html">Preços</a></li><li><a href="../atualizacoes.html">Atualizações</a></li><li><a href="index.html" aria-current="page">Manual</a></li></ul>
+      </nav>
+      <div class="nav-cta">
+        <a class="btn btn-primary btn-sm" href="../precos.html">Ver planos</a>
+        <button class="nav-toggle" aria-label="Menu" aria-expanded="false"><span></span></button>
+      </div>
+    </div>
+  </header>
+  <button class="docs-menu" type="button" aria-controls="docs-side" aria-expanded="false">Menu do manual</button>
+  <div class="docs-layout">
+    <aside class="docs-side" id="docs-side" aria-label="Menu do manual">
+      <a class="side-home" href="index.html">Manual do Buddy Editor<small>Versão 4.0.1</small></a>
+      <div class="search" data-search>
+        <input type="search" placeholder="Buscar no manual" aria-label="Buscar no manual" autocomplete="off" data-search-input>
+        <kbd>/</kbd>
+        <div class="search-results" data-search-results data-empty="Nada encontrado." hidden></div>
+      </div>
+      <nav><div class="side-group"><p class="side-title">Primeiros passos</p><ul><li><a href="introduction.html">O que é o Buddy Editor</a></li><li><a href="installation.html">Instalação</a></li><li><a href="activation.html">Ativação e licença</a></li><li><a href="panel.html">O painel</a></li><li><a href="updating.html">Atualizar e desinstalar</a></li></ul></div><div class="side-group"><p class="side-title">Como funciona</p><ul><li><a href="workflow.html">Analisar, conferir e aplicar</a></li></ul></div><div class="side-group"><p class="side-title">Módulos</p><ul><li><a href="podcast.html">Buddy Podcast</a></li><li><a href="silences.html">Buddy Silences</a></li><li><a href="zoom.html" aria-current="page">Buddy Zoom</a><ul class="side-sub"><li><a href="#1-gatilhos">1. Gatilhos</a></li><li><a href="#2-enquadramento">2. Enquadramento</a></li><li><a href="#3-estilo">3. Estilo</a></li><li><a href="#analisar-e-aplicar">Analisar e aplicar</a></li></ul></li><li><a href="angles.html">Buddy Angles</a></li></ul></div><div class="side-group"><p class="side-title">Referência</p><ul><li><a href="settings.html">Configurações e diagnóstico</a></li><li><a href="troubleshooting.html">Solução de problemas</a></li><li><a href="versions.html">Histórico de versões</a></li></ul></div></nav>
+      <div class="side-foot">
+        <a class="side-pdf" href="pdf/Buddy-Editor-Manual-PT.pdf" download>Baixar o manual em PDF</a>
+        <p class="side-lang"><span class="lang-current">Português</span> · <a href="en/zoom.html" hreflang="en">English</a></p>
+      </div>
+    </aside>
+    <main class="docs-main">
+      <article class="doc">
+<h1 id="buddy-zoom">Buddy Zoom</h1>
+<p>O Buddy Zoom adiciona zooms automáticos para dar ritmo a vídeos de uma pessoa falando. Os zooms são keyframes de <strong>Escala</strong> e <strong>Posição</strong> no efeito Movimento, então continuam editáveis. Nada é cortado ou apagado, e a duração não muda.</p>
+<h2 id="1-gatilhos">1. Gatilhos</h2>
+<ul>
+<li><span class="ui">Trilha-alvo (a mais acima)</span>: os zooms valem para esta trilha e todas abaixo dela. Deixe lower thirds, gráficos e b-roll numa trilha acima para que fiquem parados.</li>
+<li><span class="ui">Ignorar cortes destas trilhas</span>: os cortes das trilhas marcadas não disparam zoom, mas os clipes delas acompanham os zooms.</li>
+<li><span class="ui">Ritmo do zoom</span>: de Calmo a Intenso (padrão Médio). Mais intenso = zooms mais frequentes, mais rápidos e um pouco mais fortes.</li>
+<li><span class="ui">Trilha da voz</span> (A1 por padrão): usada pelos gatilhos de fala e de ênfase.</li>
+</ul>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Gatilho</th>
+<th>Padrão</th>
+<th>Quando dispara um zoom</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Corte</td>
+<td>Sempre ligado</td>
+<td>Nos cortes da timeline.</td>
+</tr>
+<tr>
+<td>Fala</td>
+<td>Ligado</td>
+<td>Quando a fala recomeça depois de uma pausa.</td>
+</tr>
+<tr>
+<td>Ênfase na voz</td>
+<td>Desligado</td>
+<td>Quando a voz fica mais alta que o normal (uma piada, uma exclamação). Usa o zoom máximo.</td>
+</tr>
+</tbody>
+</table></div>
+<p>Em <span class="ui">Ajuste fino (avançado)</span> ficam a <strong>Pausa antes da fala</strong> (padrão 0,6 s), a <strong>Sensibilidade da ênfase</strong> (padrão +6 dB) e o <strong>Nível da voz</strong>, calibrado sozinho a cada análise.</p>
+<h2 id="2-enquadramento">2. Enquadramento</h2>
+<ul>
+<li>Clique na imagem do quadro para escolher o <strong>ponto de ancoragem</strong>, o ponto que fica parado durante o zoom. A caixa tracejada mostra o que fica na tela no zoom máximo.</li>
+<li><span class="ui">Centro</span> e <span class="ui">Rosto (terço superior)</span> são atalhos para o ponto de ancoragem.</li>
+<li><strong>Zoom mínimo</strong> e <strong>Zoom máximo</strong> vão de 101% a 200% (padrão 110% e 130%).</li>
+</ul>
+<h2 id="3-estilo">3. Estilo</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Estilo</th>
+<th>Como é · bom para</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Jump cut</td>
+<td>Zoom instantâneo, sem animação. YouTube, comentários e edições de alta energia.</td>
+</tr>
+<tr>
+<td>Suave</td>
+<td>Entrada e saída suavizadas. Entrevistas, aulas e narrativas.</td>
+</tr>
+<tr>
+<td>Snap-in</td>
+<td>Entrada animada rápida, saída instantânea. Podcasts, vídeos corporativos e redes sociais.</td>
+</tr>
+</tbody>
+</table></div>
+<p>Marque um ou mais; o Buddy mistura os estilos marcados. Os cortes puxam para o Jump cut e a ênfase na voz usa Snap-in.</p>
+<p><span class="ui">Movimento sutil de câmera na mão</span> (desligado) adiciona um pequeno deslocamento durante o zoom, como uma câmera na mão, sem mostrar as bordas da imagem.</p>
+<h2 id="analisar-e-aplicar">Analisar e aplicar</h2>
+<div class="doc-steps">
+<ol>
+<li>Clique em <span class="ui">Analisar linha do tempo</span>. A prévia mostra cada zoom colorido pelo estilo, o tempo com zoom e os gatilhos encontrados.</li>
+<li>Use <span class="ui">Gerar outra variação</span> se quiser sortear outra versão.</li>
+<li>Clique em <span class="ui">Aplicar zooms na linha do tempo</span>.</li>
+</ol>
+</div>
+<div class="box info">
+<p class="box-title">Clipes que ficam sem zoom</p>
+<p>Clipes que já tinham keyframes de Escala ou Posição ficam como estão. Clipes sem o efeito Movimento, com velocidade diferente de 100% ou invertidos também são pulados. Sem o FFmpeg, só o gatilho Corte funciona e a prévia do quadro fica neutra.</p>
+</div>
+
+      </article>
+      <nav class="pager"><a class="pager-prev" href="silences.html"><small>Anterior</small>Buddy Silences</a><a class="pager-next" href="angles.html"><small>Próximo</small>Buddy Angles</a></nav>
+    </main>
+    <aside class="docs-toc" aria-label="Nesta página"><p>Nesta página</p><ul><li class="l2"><a href="#1-gatilhos">1. Gatilhos</a></li><li class="l2"><a href="#2-enquadramento">2. Enquadramento</a></li><li class="l2"><a href="#3-estilo">3. Estilo</a></li><li class="l2"><a href="#analisar-e-aplicar">Analisar e aplicar</a></li></ul></aside>
+  </div>
+  <script src="../js/site.js"></script>
+  <script src="assets/search-pt.js"></script>
+  <script src="assets/manual.js"></script>
+</body>
+</html>

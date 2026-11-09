@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Analyze, preview, apply · Buddy Editor Manual</title>
+  <meta name="description" content="All four modules follow the same steps. Nothing changes on the timeline until the last click.">
+  <meta name="theme-color" content="#070b16">
+  <link rel="alternate" hreflang="pt-BR" href="../workflow.html">
+  <link rel="alternate" hreflang="en" href="workflow.html">
+  <link rel="icon" type="image/svg+xml" href="../../buddy_editor_camadas_editavel.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../css/style.css">
+  <link rel="stylesheet" href="../assets/manual.css">
+</head>
+<body class="docs">
+  <div class="bg-deco" aria-hidden="true"></div>
+  <header class="nav">
+    <div class="wrap nav-inner">
+      <a class="brand" href="../../index.html" aria-label="Buddy Editor">
+        <img src="../../buddy_editor_camadas_editavel.svg" alt="" width="38" height="33">
+        <span class="brand-text">Buddy Editor<small>for Premiere Pro</small></span>
+      </a>
+      <nav aria-label="Principal">
+        <ul class="nav-links"><li><a href="../../index.html">Home</a></li><li><a href="../../funcionalidades.html">Features</a></li><li><a href="../../precos.html">Pricing</a></li><li><a href="../../atualizacoes.html">Updates</a></li><li><a href="../index.html" aria-current="page">Manual</a></li></ul>
+      </nav>
+      <div class="nav-cta">
+        <a class="btn btn-primary btn-sm" href="../../precos.html">See plans</a>
+        <button class="nav-toggle" aria-label="Menu" aria-expanded="false"><span></span></button>
+      </div>
+    </div>
+  </header>
+  <button class="docs-menu" type="button" aria-controls="docs-side" aria-expanded="false">Manual menu</button>
+  <div class="docs-layout">
+    <aside class="docs-side" id="docs-side" aria-label="Manual menu">
+      <a class="side-home" href="index.html">Buddy Editor Manual<small>Version 4.0.1</small></a>
+      <div class="search" data-search>
+        <input type="search" placeholder="Search the manual" aria-label="Search the manual" autocomplete="off" data-search-input>
+        <kbd>/</kbd>
+        <div class="search-results" data-search-results data-empty="No results." hidden></div>
+      </div>
+      <nav><div class="side-group"><p class="side-title">Getting started</p><ul><li><a href="introduction.html">What Buddy Editor is</a></li><li><a href="installation.html">Installation</a></li><li><a href="activation.html">Activation and license</a></li><li><a href="panel.html">The panel</a></li><li><a href="updating.html">Updating and uninstalling</a></li></ul></div><div class="side-group"><p class="side-title">How it works</p><ul><li><a href="workflow.html" aria-current="page">Analyze, preview, apply</a><ul class="side-sub"><li><a href="#the-workflow">The workflow</a></li><li><a href="#backup-copy">Backup copy</a></li><li><a href="#recurring-controls">Recurring controls</a></li><li><a href="#clips-buddy-skips">Clips Buddy skips</a></li></ul></li></ul></div><div class="side-group"><p class="side-title">Modules</p><ul><li><a href="podcast.html">Buddy Podcast</a></li><li><a href="silences.html">Buddy Silences</a></li><li><a href="zoom.html">Buddy Zoom</a></li><li><a href="angles.html">Buddy Angles</a></li></ul></div><div class="side-group"><p class="side-title">Reference</p><ul><li><a href="settings.html">Settings and diagnostics</a></li><li><a href="troubleshooting.html">Troubleshooting</a></li><li><a href="versions.html">Version history</a></li></ul></div></nav>
+      <div class="side-foot">
+        <a class="side-pdf" href="../pdf/Buddy-Editor-Manual-EN.pdf" download>Download the PDF manual</a>
+        <p class="side-lang"><a href="../workflow.html" hreflang="pt-BR">Português</a> · <span class="lang-current">English</span></p>
+      </div>
+    </aside>
+    <main class="docs-main">
+      <article class="doc">
+<h1 id="analyze-preview-apply">Analyze, preview, apply</h1>
+<p>All four modules follow the same steps. Nothing changes on the timeline until the last click.</p>
+<h2 id="the-workflow">The workflow</h2>
+<div class="doc-steps">
+<ol>
+<li><strong>Configure.</strong> Open the sequence in Premiere and the module's tab. Buddy lists only the tracks that have clips and fills in default values. The setup is saved automatically for each sequence, and the last one used carries over to new sequences.</li>
+<li><strong>Analyze.</strong> Click <span class="ui">Analyze audio</span> (in Zoom, <span class="ui">Analyze timeline</span>). Buddy reads the audio straight from the original files: it renders nothing and does not change the timeline. You can stop it with <span class="ui">Cancel</span>.</li>
+<li><strong>Check the preview.</strong> A bar shows the whole timeline, with counts and warnings. Changing a rule updates the preview instantly, without analyzing again.</li>
+<li><strong>Apply.</strong> Click the blue button. Buddy checks the sequence has not changed, creates the backup, edits and shows the result with the backup name.</li>
+</ol>
+</div>
+<p>If the sequence changed after the analysis (another active sequence, a different duration or new In and Out marks), Buddy asks you to analyze again.</p>
+<h2 id="backup-copy">Backup copy</h2>
+<p>Before touching the timeline, Buddy duplicates the sequence as <code>&lt;name&gt;_BuddyBackup_&lt;date_time&gt;</code>. The result message shows that name.</p>
+<div class="box tip">
+<p class="box-title">To go back</p>
+<p>Open the <code>_BuddyBackup_</code> sequence in the Project panel. It is an exact copy from before the edit.</p>
+</div>
+<h2 id="recurring-controls">Recurring controls</h2>
+<ul>
+<li><span class="ui">Fine tuning (advanced)</span> reveals the manual controls. You rarely need it: Buddy calibrates itself on every analysis.</li>
+<li><strong>Exact values:</strong> double-click a number, type and press Enter (Esc cancels). Comma or dot both work.</li>
+<li><span class="ui">Generate another variation</span> (Zoom and Angles) draws a new version. The preview and the applied edit are always identical.</li>
+<li><strong>Range</strong> (Silences and Zoom): <span class="ui">Entire sequence</span> or <span class="ui">Sequence In/Out</span>, using Premiere's I and O marks.</li>
+</ul>
+<h2 id="clips-buddy-skips">Clips Buddy skips</h2>
+<p>During analysis Buddy skips the clips below, and the preview reports how many:</p>
+<ul>
+<li>disabled clips;</li>
+<li>clips with speed other than 100%, or reversed;</li>
+<li>nested sequences and multicam;</li>
+<li>items without a media file (generated inside Premiere).</li>
+</ul>
+
+      </article>
+      <nav class="pager"><a class="pager-prev" href="updating.html"><small>Previous</small>Updating and uninstalling</a><a class="pager-next" href="podcast.html"><small>Next</small>Buddy Podcast</a></nav>
+    </main>
+    <aside class="docs-toc" aria-label="On this page"><p>On this page</p><ul><li class="l2"><a href="#the-workflow">The workflow</a></li><li class="l2"><a href="#backup-copy">Backup copy</a></li><li class="l2"><a href="#recurring-controls">Recurring controls</a></li><li class="l2"><a href="#clips-buddy-skips">Clips Buddy skips</a></li></ul></aside>
+  </div>
+  <script src="../../js/site.js"></script>
+  <script src="../assets/search-en.js"></script>
+  <script src="../assets/manual.js"></script>
+</body>
+</html>

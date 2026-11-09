@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Buddy Silences · Buddy Editor Manual</title>
+  <meta name="description" content="Buddy Silences removes the pauses from a talking-head video. It finds the silences on one audio track and cuts every unlocked track at the same points, so ">
+  <meta name="theme-color" content="#070b16">
+  <link rel="alternate" hreflang="pt-BR" href="../silences.html">
+  <link rel="alternate" hreflang="en" href="silences.html">
+  <link rel="icon" type="image/svg+xml" href="../../buddy_editor_camadas_editavel.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../css/style.css">
+  <link rel="stylesheet" href="../assets/manual.css">
+</head>
+<body class="docs">
+  <div class="bg-deco" aria-hidden="true"></div>
+  <header class="nav">
+    <div class="wrap nav-inner">
+      <a class="brand" href="../../index.html" aria-label="Buddy Editor">
+        <img src="../../buddy_editor_camadas_editavel.svg" alt="" width="38" height="33">
+        <span class="brand-text">Buddy Editor<small>for Premiere Pro</small></span>
+      </a>
+      <nav aria-label="Principal">
+        <ul class="nav-links"><li><a href="../../index.html">Home</a></li><li><a href="../../funcionalidades.html">Features</a></li><li><a href="../../precos.html">Pricing</a></li><li><a href="../../atualizacoes.html">Updates</a></li><li><a href="../index.html" aria-current="page">Manual</a></li></ul>
+      </nav>
+      <div class="nav-cta">
+        <a class="btn btn-primary btn-sm" href="../../precos.html">See plans</a>
+        <button class="nav-toggle" aria-label="Menu" aria-expanded="false"><span></span></button>
+      </div>
+    </div>
+  </header>
+  <button class="docs-menu" type="button" aria-controls="docs-side" aria-expanded="false">Manual menu</button>
+  <div class="docs-layout">
+    <aside class="docs-side" id="docs-side" aria-label="Manual menu">
+      <a class="side-home" href="index.html">Buddy Editor Manual<small>Version 4.0.1</small></a>
+      <div class="search" data-search>
+        <input type="search" placeholder="Search the manual" aria-label="Search the manual" autocomplete="off" data-search-input>
+        <kbd>/</kbd>
+        <div class="search-results" data-search-results data-empty="No results." hidden></div>
+      </div>
+      <nav><div class="side-group"><p class="side-title">Getting started</p><ul><li><a href="introduction.html">What Buddy Editor is</a></li><li><a href="installation.html">Installation</a></li><li><a href="activation.html">Activation and license</a></li><li><a href="panel.html">The panel</a></li><li><a href="updating.html">Updating and uninstalling</a></li></ul></div><div class="side-group"><p class="side-title">How it works</p><ul><li><a href="workflow.html">Analyze, preview, apply</a></li></ul></div><div class="side-group"><p class="side-title">Modules</p><ul><li><a href="podcast.html">Buddy Podcast</a></li><li><a href="silences.html" aria-current="page">Buddy Silences</a><ul class="side-sub"><li><a href="#1-audio">1. Audio</a></li><li><a href="#2-rules">2. Rules</a></li><li><a href="#analyze-and-apply">Analyze and apply</a></li><li><a href="#b-roll-and-lettering">B-roll and lettering</a></li></ul></li><li><a href="zoom.html">Buddy Zoom</a></li><li><a href="angles.html">Buddy Angles</a></li></ul></div><div class="side-group"><p class="side-title">Reference</p><ul><li><a href="settings.html">Settings and diagnostics</a></li><li><a href="troubleshooting.html">Troubleshooting</a></li><li><a href="versions.html">Version history</a></li></ul></div></nav>
+      <div class="side-foot">
+        <a class="side-pdf" href="../pdf/Buddy-Editor-Manual-EN.pdf" download>Download the PDF manual</a>
+        <p class="side-lang"><a href="../silences.html" hreflang="pt-BR">Português</a> · <span class="lang-current">English</span></p>
+      </div>
+    </aside>
+    <main class="docs-main">
+      <article class="doc">
+<h1 id="buddy-silences">Buddy Silences</h1>
+<p>Buddy Silences removes the pauses from a talking-head video. It finds the silences on one audio track and cuts <strong>every unlocked track</strong> at the same points, so everything stays in sync. It is free.</p>
+<div class="box info">
+<p class="box-title">Use it first</p>
+<p>Run Silences as the first step of the edit, before music, b-roll or lettering. See why in <a href="#b-roll-and-lettering">B-roll and lettering</a>.</p>
+</div>
+<h2 id="1-audio">1. Audio</h2>
+<ul>
+<li><span class="ui">Analyzed track</span>: the voice track, A1 by default.</li>
+<li><span class="ui">Silence level</span> (default −38 dB): anything below it counts as silence. Raise it if room noise is not detected; lower it if soft words are being cut.</li>
+<li><span class="ui">Range</span>: Entire sequence or Sequence In/Out.</li>
+<li>Locked tracks stay out of the edit. If the analyzed track is locked, it goes out of sync with the rest.</li>
+</ul>
+<h2 id="2-rules">2. Rules</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Option</th>
+<th>What it does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Shortest silence to remove<span class="d">Default: 300 ms</span></td>
+<td>Shorter pauses stay in the video.</td>
+</tr>
+<tr>
+<td>Keep after the speech<span class="d">Default: 100 ms</span></td>
+<td>Room left at the end of a sentence, before the cut.</td>
+</tr>
+<tr>
+<td>Keep before the speech<span class="d">Default: 100 ms</span></td>
+<td>Room left before the next sentence starts, after the cut.</td>
+</tr>
+<tr>
+<td>Remove short sounds between silences<span class="d">Default: on · up to 150 ms</span></td>
+<td>An &quot;uh&quot;, click or lip noise alone in the middle of a pause is removed with it.</td>
+</tr>
+<tr>
+<td>What to do with the silences<span class="d">Default: Cut and ripple delete</span></td>
+<td><strong>Cut and ripple delete</strong>: removes them and closes the gaps; the video gets shorter.<br><strong>Cut and delete</strong>: removes them and leaves the gaps.<br><strong>Cut only</strong>: only cuts, deleting nothing, so you can review.</td>
+</tr>
+<tr>
+<td>Audio fade at each cut<span class="d">Default: off · 66 ms</span></td>
+<td>A short audio-only fade so cuts do not pop. The video stays a hard cut. The value is rounded to whole frames.</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="analyze-and-apply">Analyze and apply</h2>
+<div class="doc-steps">
+<ol>
+<li>Click <span class="ui">Analyze audio</span>. On the preview bar, <strong>blue stays and yellow is removed</strong>.</li>
+<li>Check the number of silences, the time removed, the duration now and the duration after.</li>
+<li>Click <span class="ui">Apply cuts to timeline</span>.</li>
+</ol>
+</div>
+<h2 id="b-roll-and-lettering">B-roll and lettering</h2>
+<p>A track with a gap under a silence can keep the gap from closing on every track. When that happens Buddy stops the edit to keep everything in sync and shows how many silences were already removed. Go back with the backup copy and run Silences before building the upper tracks.</p>
+<div class="box tip">
+<p class="box-title">Linked clips</p>
+<p>If Premiere does not cut clips with linked audio and video, Buddy unlinks them by itself, tries again and says so in the result message.</p>
+</div>
+
+      </article>
+      <nav class="pager"><a class="pager-prev" href="podcast.html"><small>Previous</small>Buddy Podcast</a><a class="pager-next" href="zoom.html"><small>Next</small>Buddy Zoom</a></nav>
+    </main>
+    <aside class="docs-toc" aria-label="On this page"><p>On this page</p><ul><li class="l2"><a href="#1-audio">1. Audio</a></li><li class="l2"><a href="#2-rules">2. Rules</a></li><li class="l2"><a href="#analyze-and-apply">Analyze and apply</a></li><li class="l2"><a href="#b-roll-and-lettering">B-roll and lettering</a></li></ul></aside>
+  </div>
+  <script src="../../js/site.js"></script>
+  <script src="../assets/search-en.js"></script>
+  <script src="../assets/manual.js"></script>
+</body>
+</html>

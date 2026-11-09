@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>O que é o Buddy Editor · Manual do Buddy Editor</title>
+  <meta name="description" content="O Buddy Editor é uma extensão para o Adobe Premiere Pro no Windows que automatiza tarefas repetitivas de edição. Ele lê o áudio direto dos arquivos origina">
+  <meta name="theme-color" content="#070b16">
+  <link rel="alternate" hreflang="pt-BR" href="introduction.html">
+  <link rel="alternate" hreflang="en" href="en/introduction.html">
+  <link rel="icon" type="image/svg+xml" href="../buddy_editor_camadas_editavel.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="assets/manual.css">
+</head>
+<body class="docs">
+  <div class="bg-deco" aria-hidden="true"></div>
+  <header class="nav">
+    <div class="wrap nav-inner">
+      <a class="brand" href="../index.html" aria-label="Buddy Editor">
+        <img src="../buddy_editor_camadas_editavel.svg" alt="" width="38" height="33">
+        <span class="brand-text">Buddy Editor<small>para Premiere Pro</small></span>
+      </a>
+      <nav aria-label="Principal">
+        <ul class="nav-links"><li><a href="../index.html">Início</a></li><li><a href="../funcionalidades.html">Funcionalidades</a></li><li><a href="../precos.html">Preços</a></li><li><a href="../atualizacoes.html">Atualizações</a></li><li><a href="index.html" aria-current="page">Manual</a></li></ul>
+      </nav>
+      <div class="nav-cta">
+        <a class="btn btn-primary btn-sm" href="../precos.html">Ver planos</a>
+        <button class="nav-toggle" aria-label="Menu" aria-expanded="false"><span></span></button>
+      </div>
+    </div>
+  </header>
+  <button class="docs-menu" type="button" aria-controls="docs-side" aria-expanded="false">Menu do manual</button>
+  <div class="docs-layout">
+    <aside class="docs-side" id="docs-side" aria-label="Menu do manual">
+      <a class="side-home" href="index.html">Manual do Buddy Editor<small>Versão 4.0.1</small></a>
+      <div class="search" data-search>
+        <input type="search" placeholder="Buscar no manual" aria-label="Buscar no manual" autocomplete="off" data-search-input>
+        <kbd>/</kbd>
+        <div class="search-results" data-search-results data-empty="Nada encontrado." hidden></div>
+      </div>
+      <nav><div class="side-group"><p class="side-title">Primeiros passos</p><ul><li><a href="introduction.html" aria-current="page">O que é o Buddy Editor</a><ul class="side-sub"><li><a href="#modulos">Módulos</a></li><li><a href="#principios">Princípios</a></li><li><a href="#requisitos">Requisitos</a></li></ul></li><li><a href="installation.html">Instalação</a></li><li><a href="activation.html">Ativação e licença</a></li><li><a href="panel.html">O painel</a></li><li><a href="updating.html">Atualizar e desinstalar</a></li></ul></div><div class="side-group"><p class="side-title">Como funciona</p><ul><li><a href="workflow.html">Analisar, conferir e aplicar</a></li></ul></div><div class="side-group"><p class="side-title">Módulos</p><ul><li><a href="podcast.html">Buddy Podcast</a></li><li><a href="silences.html">Buddy Silences</a></li><li><a href="zoom.html">Buddy Zoom</a></li><li><a href="angles.html">Buddy Angles</a></li></ul></div><div class="side-group"><p class="side-title">Referência</p><ul><li><a href="settings.html">Configurações e diagnóstico</a></li><li><a href="troubleshooting.html">Solução de problemas</a></li><li><a href="versions.html">Histórico de versões</a></li></ul></div></nav>
+      <div class="side-foot">
+        <a class="side-pdf" href="pdf/Buddy-Editor-Manual-PT.pdf" download>Baixar o manual em PDF</a>
+        <p class="side-lang"><span class="lang-current">Português</span> · <a href="en/introduction.html" hreflang="en">English</a></p>
+      </div>
+    </aside>
+    <main class="docs-main">
+      <article class="doc">
+<h1 id="o-que-e-o-buddy-editor">O que é o Buddy Editor</h1>
+<p>O Buddy Editor é uma extensão para o Adobe Premiere Pro no Windows que automatiza tarefas repetitivas de edição. Ele lê o áudio direto dos arquivos originais, mostra uma prévia do que vai fazer e só mexe na timeline quando você clica em aplicar.</p>
+<h2 id="modulos">Módulos</h2>
+<p>Cada módulo fica em uma aba do painel.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Módulo (aba)</th>
+<th>O que faz</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Buddy Podcast<span class="d">aba Podcast</span></td>
+<td>Corta e troca as câmeras de um podcast conforme quem está falando.</td>
+</tr>
+<tr>
+<td>Buddy Silences<span class="d">aba Silêncios · grátis</span></td>
+<td>Remove as pausas de um vídeo de uma pessoa falando, em todas as trilhas ao mesmo tempo.</td>
+</tr>
+<tr>
+<td>Buddy Zoom<span class="d">aba Zoom</span></td>
+<td>Adiciona zooms automáticos nos cortes, na fala e na ênfase da voz.</td>
+</tr>
+<tr>
+<td>Buddy Angles<span class="d">aba Ângulos</span></td>
+<td>Alterna os ângulos de câmera de uma pessoa, só nas pausas da fala.</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="principios">Princípios</h2>
+<ul>
+<li><strong>Nada muda sem o seu clique.</strong> A análise só lê o áudio; a timeline só muda quando você clica em aplicar.</li>
+<li><strong>Sempre existe uma cópia de segurança.</strong> Antes de editar, o Buddy duplica a sequência. Veja <a href="workflow.html#copia-de-seguranca">Cópia de segurança</a>.</li>
+<li><strong>Nada é renderizado.</strong> O Buddy lê o áudio dos arquivos de mídia, então a análise é rápida e roda no seu computador.</li>
+<li><strong>O resultado continua editável.</strong> Cortes, clipes desativados e keyframes ficam na timeline como se você tivesse feito à mão.</li>
+</ul>
+<h2 id="requisitos">Requisitos</h2>
+<ul>
+<li>Windows 10 ou 11 (64 bits). O macOS ainda não é suportado.</li>
+<li>Adobe Premiere Pro 2022 (versão 22) ou mais novo.</li>
+<li>O <strong>ZXP Installer</strong> da aescripts (gratuito), para instalar o plugin.</li>
+<li>Internet para ativar a licença e receber atualizações. Depois de ativado, o Buddy funciona até 7 dias sem internet.</li>
+<li>Nenhum outro programa precisa ser instalado: o pacote já inclui o FFmpeg, programa gratuito (licença LGPL) que o Buddy usa para ler o áudio.</li>
+</ul>
+
+      </article>
+      <nav class="pager"><a class="pager-prev" href="index.html"><small>Anterior</small>Manual do Buddy Editor</a><a class="pager-next" href="installation.html"><small>Próximo</small>Instalação</a></nav>
+    </main>
+    <aside class="docs-toc" aria-label="Nesta página"><p>Nesta página</p><ul><li class="l2"><a href="#modulos">Módulos</a></li><li class="l2"><a href="#principios">Princípios</a></li><li class="l2"><a href="#requisitos">Requisitos</a></li></ul></aside>
+  </div>
+  <script src="../js/site.js"></script>
+  <script src="assets/search-pt.js"></script>
+  <script src="assets/manual.js"></script>
+</body>
+</html>

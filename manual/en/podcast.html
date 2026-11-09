@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Buddy Podcast · Buddy Editor Manual</title>
+  <meta name="description" content="Buddy Podcast edits podcasts recorded with several cameras and one microphone per person. It listens to the mics, works out who is speaking at each moment ">
+  <meta name="theme-color" content="#070b16">
+  <link rel="alternate" hreflang="pt-BR" href="../podcast.html">
+  <link rel="alternate" hreflang="en" href="podcast.html">
+  <link rel="icon" type="image/svg+xml" href="../../buddy_editor_camadas_editavel.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../css/style.css">
+  <link rel="stylesheet" href="../assets/manual.css">
+</head>
+<body class="docs">
+  <div class="bg-deco" aria-hidden="true"></div>
+  <header class="nav">
+    <div class="wrap nav-inner">
+      <a class="brand" href="../../index.html" aria-label="Buddy Editor">
+        <img src="../../buddy_editor_camadas_editavel.svg" alt="" width="38" height="33">
+        <span class="brand-text">Buddy Editor<small>for Premiere Pro</small></span>
+      </a>
+      <nav aria-label="Principal">
+        <ul class="nav-links"><li><a href="../../index.html">Home</a></li><li><a href="../../funcionalidades.html">Features</a></li><li><a href="../../precos.html">Pricing</a></li><li><a href="../../atualizacoes.html">Updates</a></li><li><a href="../index.html" aria-current="page">Manual</a></li></ul>
+      </nav>
+      <div class="nav-cta">
+        <a class="btn btn-primary btn-sm" href="../../precos.html">See plans</a>
+        <button class="nav-toggle" aria-label="Menu" aria-expanded="false"><span></span></button>
+      </div>
+    </div>
+  </header>
+  <button class="docs-menu" type="button" aria-controls="docs-side" aria-expanded="false">Manual menu</button>
+  <div class="docs-layout">
+    <aside class="docs-side" id="docs-side" aria-label="Manual menu">
+      <a class="side-home" href="index.html">Buddy Editor Manual<small>Version 4.0.1</small></a>
+      <div class="search" data-search>
+        <input type="search" placeholder="Search the manual" aria-label="Search the manual" autocomplete="off" data-search-input>
+        <kbd>/</kbd>
+        <div class="search-results" data-search-results data-empty="No results." hidden></div>
+      </div>
+      <nav><div class="side-group"><p class="side-title">Getting started</p><ul><li><a href="introduction.html">What Buddy Editor is</a></li><li><a href="installation.html">Installation</a></li><li><a href="activation.html">Activation and license</a></li><li><a href="panel.html">The panel</a></li><li><a href="updating.html">Updating and uninstalling</a></li></ul></div><div class="side-group"><p class="side-title">How it works</p><ul><li><a href="workflow.html">Analyze, preview, apply</a></li></ul></div><div class="side-group"><p class="side-title">Modules</p><ul><li><a href="podcast.html" aria-current="page">Buddy Podcast</a><ul class="side-sub"><li><a href="#preparing-the-sequence">Preparing the sequence</a></li><li><a href="#1-speakers">1. Speakers</a></li><li><a href="#2-cameras">2. Cameras</a></li><li><a href="#3-rules">3. Rules</a></li><li><a href="#analyze-and-apply">Analyze and apply</a></li><li><a href="#preview-warnings">Preview warnings</a></li></ul></li><li><a href="silences.html">Buddy Silences</a></li><li><a href="zoom.html">Buddy Zoom</a></li><li><a href="angles.html">Buddy Angles</a></li></ul></div><div class="side-group"><p class="side-title">Reference</p><ul><li><a href="settings.html">Settings and diagnostics</a></li><li><a href="troubleshooting.html">Troubleshooting</a></li><li><a href="versions.html">Version history</a></li></ul></div></nav>
+      <div class="side-foot">
+        <a class="side-pdf" href="../pdf/Buddy-Editor-Manual-EN.pdf" download>Download the PDF manual</a>
+        <p class="side-lang"><a href="../podcast.html" hreflang="pt-BR">Português</a> · <span class="lang-current">English</span></p>
+      </div>
+    </aside>
+    <main class="docs-main">
+      <article class="doc">
+<h1 id="buddy-podcast">Buddy Podcast</h1>
+<p>Buddy Podcast edits podcasts recorded with several cameras and one microphone per person. It listens to the mics, works out who is speaking at each moment and puts that person's camera on air.</p>
+<ul>
+<li><strong>Whoever is loudest on their own mic wins.</strong> A person's voice leaking into the other mics is always quieter, so it is ignored.</li>
+<li><strong>The sequence duration does not change.</strong> Buddy cuts and turns camera pieces on or off, but never pulls the timeline (no ripple delete).</li>
+</ul>
+<h2 id="preparing-the-sequence">Preparing the sequence</h2>
+<ul>
+<li><strong>One microphone per audio track</strong> (A1, A2, A3…). If several mics share one multichannel file and each channel sits on its own track, Buddy splits the channels by itself, in the order Premiere shows them (Ch. 1, Ch. 2…).</li>
+<li><strong>One camera per video track</strong> (V1, V2, V3…).</li>
+<li><strong>Everything in sync</strong> before using Buddy.</li>
+</ul>
+<h2 id="1-speakers">1. Speakers</h2>
+<ul>
+<li>Buddy creates a speaker for each audio track with clips. Type each person's name and check the <span class="ui">Mic track</span> (A1, A2…).</li>
+<li>The checkbox next to the name includes or ignores that mic. <span class="ui">Add speaker</span> creates one more.</li>
+<li><span class="ui">Fine tuning (advanced)</span> shows each mic's <strong>Silence gate</strong>, the <span class="ui">Auto-calibrate</span> button and the channel choice. Leave the channel on <span class="ui">Automatic (same as Premiere)</span>.</li>
+</ul>
+<h2 id="2-cameras">2. Cameras</h2>
+<ul>
+<li>For each video track, mark whose camera it is. One person: <strong>Solo camera</strong>. Several people: <strong>Group shot</strong>. Nobody: <strong>Not used</strong> (Buddy leaves that track alone).</li>
+<li>A person can have more than one camera (for example, a close-up and a medium shot). With Maximum shot on, Buddy alternates between them during long turns.</li>
+<li>The <strong>Cameras linked</strong> summary warns when a speaker has no camera.</li>
+</ul>
+<div class="box tip">
+<p class="box-title">Wide shot</p>
+<p>Mark the wide camera for <strong>all</strong> speakers. It becomes a group shot: it goes on air when two people talk together and alternates with the speaker's camera during long turns.</p>
+</div>
+<h2 id="3-rules">3. Rules</h2>
+<p>The defaults work for most podcasts.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Option</th>
+<th>What it does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Minimum shot<span class="d">Default: 2.0 s</span></td>
+<td>Turns shorter than this do not switch cameras. Avoids choppy cuts on &quot;uh-huh&quot; and short laughs.</td>
+</tr>
+<tr>
+<td>Maximum shot<span class="d">Default: 6.0 s · can be turned off</span></td>
+<td>During long turns, switches to another camera marked for the same person (another angle or the wide shot) at each interval.</td>
+</tr>
+<tr>
+<td>Pause tolerance<span class="d">Default: 1.5 s</span></td>
+<td>Pauses shorter than this keep the current speaker on air.</td>
+</tr>
+<tr>
+<td>Edit mode<span class="d">Default: Cut and switch cameras</span></td>
+<td><strong>Cut and switch cameras</strong>: keeps only the speaker's camera on air.<br><strong>Cut only (keep all visible)</strong>: only cuts at speaker changes, so you choose the cameras yourself.</td>
+</tr>
+<tr>
+<td>Camera layers<span class="d">Default: Stack</span></td>
+<td><strong>Stack</strong>: only the camera on air stays on; each camera stays on its own track.<br><strong>Linear</strong>: moves every piece that goes on air, in order, to a new video track on top.</td>
+</tr>
+<tr>
+<td>Where to cut<span class="d">Default: Only tracks that change</span></td>
+<td><strong>Only tracks that change</strong>: each switch cuts only the camera leaving and the one entering.<br><strong>All tracks</strong>: each switch cuts every camera track.</td>
+</tr>
+<tr>
+<td>Unlink audio and video before cutting<span class="d">Default: on (recommended)</span></td>
+<td>Makes sure cutting a camera never cuts its audio too.</td>
+</tr>
+<tr>
+<td>Also cut the mic audio<span class="d">Default: off</span></td>
+<td>When on, the mic tracks are also cut at every switch.</td>
+</tr>
+<tr>
+<td>Inactive cameras<span class="d">Default: Disable clips</span></td>
+<td><strong>Disable clips</strong>: pieces off air stay on the timeline, disabled (you can re-enable them).<br><strong>Delete clips (lift)</strong>: deletes those pieces and leaves a gap.</td>
+</tr>
+<tr>
+<td>Inactive microphones<span class="d">Default: Keep audio intact</span></td>
+<td><strong>Mute other mics while someone speaks</strong>: while one person speaks alone, the other mics are cut and disabled, removing bleed and noise.</td>
+</tr>
+<tr>
+<td>Speaker markers<span class="d">Default: off</span></td>
+<td>Adds a sequence marker at every switch, with the person's name.</td>
+</tr>
+<tr>
+<td>Empty tracks after editing<span class="d">Default: Keep all</span></td>
+<td>Can delete the empty video and/or audio tracks of the sequence, including ones that were already empty.</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="analyze-and-apply">Analyze and apply</h2>
+<div class="doc-steps">
+<ol>
+<li>Click <span class="ui">Analyze audio</span>. The preview shows the timeline colored by the camera on air, the number of cuts, each person's speaking time, cross-talk and silence.</li>
+<li>Adjust the rules if you want. The preview updates instantly.</li>
+<li>Click <span class="ui">Apply cuts to timeline</span>.</li>
+</ol>
+</div>
+<h2 id="preview-warnings">Preview warnings</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Warning</th>
+<th>What to do</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Mics receiving the same audio</td>
+<td>Use the <span class="ui">Split channels automatically</span> button in the preview.</td>
+</tr>
+<tr>
+<td>Little speech detected</td>
+<td>Check in 1. Speakers that each person is on the right track, or open Fine tuning and lower the silence gate.</td>
+</tr>
+<tr>
+<td>No audio found on a mic</td>
+<td>Check the mic track is right (A1, A2…).</td>
+</tr>
+<tr>
+<td>Speaker without a camera</td>
+<td>Mark a camera for them in 2. Cameras. Meanwhile, the previous camera stays on air.</td>
+</tr>
+</tbody>
+</table></div>
+
+      </article>
+      <nav class="pager"><a class="pager-prev" href="workflow.html"><small>Previous</small>Analyze, preview, apply</a><a class="pager-next" href="silences.html"><small>Next</small>Buddy Silences</a></nav>
+    </main>
+    <aside class="docs-toc" aria-label="On this page"><p>On this page</p><ul><li class="l2"><a href="#preparing-the-sequence">Preparing the sequence</a></li><li class="l2"><a href="#1-speakers">1. Speakers</a></li><li class="l2"><a href="#2-cameras">2. Cameras</a></li><li class="l2"><a href="#3-rules">3. Rules</a></li><li class="l2"><a href="#analyze-and-apply">Analyze and apply</a></li><li class="l2"><a href="#preview-warnings">Preview warnings</a></li></ul></aside>
+  </div>
+  <script src="../../js/site.js"></script>
+  <script src="../assets/search-en.js"></script>
+  <script src="../assets/manual.js"></script>
+</body>
+</html>

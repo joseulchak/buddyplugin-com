@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Buddy Silences · Manual do Buddy Editor</title>
+  <meta name="description" content="O Buddy Silences remove as pausas de um vídeo de uma pessoa falando. Ele procura os silêncios em uma trilha de áudio e corta todas as trilhas destrancadas ">
+  <meta name="theme-color" content="#070b16">
+  <link rel="alternate" hreflang="pt-BR" href="silences.html">
+  <link rel="alternate" hreflang="en" href="en/silences.html">
+  <link rel="icon" type="image/svg+xml" href="../buddy_editor_camadas_editavel.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="assets/manual.css">
+</head>
+<body class="docs">
+  <div class="bg-deco" aria-hidden="true"></div>
+  <header class="nav">
+    <div class="wrap nav-inner">
+      <a class="brand" href="../index.html" aria-label="Buddy Editor">
+        <img src="../buddy_editor_camadas_editavel.svg" alt="" width="38" height="33">
+        <span class="brand-text">Buddy Editor<small>para Premiere Pro</small></span>
+      </a>
+      <nav aria-label="Principal">
+        <ul class="nav-links"><li><a href="../index.html">Início</a></li><li><a href="../funcionalidades.html">Funcionalidades</a></li><li><a href="../precos.html">Preços</a></li><li><a href="../atualizacoes.html">Atualizações</a></li><li><a href="index.html" aria-current="page">Manual</a></li></ul>
+      </nav>
+      <div class="nav-cta">
+        <a class="btn btn-primary btn-sm" href="../precos.html">Ver planos</a>
+        <button class="nav-toggle" aria-label="Menu" aria-expanded="false"><span></span></button>
+      </div>
+    </div>
+  </header>
+  <button class="docs-menu" type="button" aria-controls="docs-side" aria-expanded="false">Menu do manual</button>
+  <div class="docs-layout">
+    <aside class="docs-side" id="docs-side" aria-label="Menu do manual">
+      <a class="side-home" href="index.html">Manual do Buddy Editor<small>Versão 4.0.1</small></a>
+      <div class="search" data-search>
+        <input type="search" placeholder="Buscar no manual" aria-label="Buscar no manual" autocomplete="off" data-search-input>
+        <kbd>/</kbd>
+        <div class="search-results" data-search-results data-empty="Nada encontrado." hidden></div>
+      </div>
+      <nav><div class="side-group"><p class="side-title">Primeiros passos</p><ul><li><a href="introduction.html">O que é o Buddy Editor</a></li><li><a href="installation.html">Instalação</a></li><li><a href="activation.html">Ativação e licença</a></li><li><a href="panel.html">O painel</a></li><li><a href="updating.html">Atualizar e desinstalar</a></li></ul></div><div class="side-group"><p class="side-title">Como funciona</p><ul><li><a href="workflow.html">Analisar, conferir e aplicar</a></li></ul></div><div class="side-group"><p class="side-title">Módulos</p><ul><li><a href="podcast.html">Buddy Podcast</a></li><li><a href="silences.html" aria-current="page">Buddy Silences</a><ul class="side-sub"><li><a href="#1-audio">1. Áudio</a></li><li><a href="#2-regras">2. Regras</a></li><li><a href="#analisar-e-aplicar">Analisar e aplicar</a></li><li><a href="#b-roll-e-lettering">B-roll e lettering</a></li></ul></li><li><a href="zoom.html">Buddy Zoom</a></li><li><a href="angles.html">Buddy Angles</a></li></ul></div><div class="side-group"><p class="side-title">Referência</p><ul><li><a href="settings.html">Configurações e diagnóstico</a></li><li><a href="troubleshooting.html">Solução de problemas</a></li><li><a href="versions.html">Histórico de versões</a></li></ul></div></nav>
+      <div class="side-foot">
+        <a class="side-pdf" href="pdf/Buddy-Editor-Manual-PT.pdf" download>Baixar o manual em PDF</a>
+        <p class="side-lang"><span class="lang-current">Português</span> · <a href="en/silences.html" hreflang="en">English</a></p>
+      </div>
+    </aside>
+    <main class="docs-main">
+      <article class="doc">
+<h1 id="buddy-silences">Buddy Silences</h1>
+<p>O Buddy Silences remove as pausas de um vídeo de uma pessoa falando. Ele procura os silêncios em uma trilha de áudio e corta <strong>todas as trilhas destrancadas</strong> nos mesmos pontos, para tudo continuar sincronizado. É grátis.</p>
+<div class="box info">
+<p class="box-title">Use primeiro</p>
+<p>Rode o Silences como primeiro passo da edição, antes de música, b-roll ou lettering. Veja o motivo em <a href="#b-roll-e-lettering">B-roll e lettering</a>.</p>
+</div>
+<h2 id="1-audio">1. Áudio</h2>
+<ul>
+<li><span class="ui">Trilha analisada</span>: a trilha da voz, A1 por padrão.</li>
+<li><span class="ui">Nível do silêncio</span> (padrão −38 dB): tudo abaixo conta como silêncio. Aumente se o ruído da sala não for detectado; diminua se palavras baixas estiverem sendo cortadas.</li>
+<li><span class="ui">Intervalo</span>: Sequência inteira ou Entrada/Saída da sequência.</li>
+<li>Trilhas trancadas ficam fora da edição. Se a trilha analisada estiver trancada, ela sai de sincronia com o resto.</li>
+</ul>
+<h2 id="2-regras">2. Regras</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Opção</th>
+<th>O que faz</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Menor silêncio a remover<span class="d">Padrão: 300 ms</span></td>
+<td>Pausas menores que isso ficam no vídeo.</td>
+</tr>
+<tr>
+<td>Respiro depois da fala<span class="d">Padrão: 100 ms</span></td>
+<td>Espaço que fica no fim da frase, antes do corte.</td>
+</tr>
+<tr>
+<td>Respiro antes da fala<span class="d">Padrão: 100 ms</span></td>
+<td>Espaço que fica antes da próxima frase começar, depois do corte.</td>
+</tr>
+<tr>
+<td>Remover sons curtos entre silêncios<span class="d">Padrão: ligado · até 150 ms</span></td>
+<td>Um &quot;é&quot;, estalo ou barulho de boca sozinho no meio de uma pausa sai junto com ela.</td>
+</tr>
+<tr>
+<td>O que fazer com os silêncios<span class="d">Padrão: Cortar e ripple delete</span></td>
+<td><strong>Cortar e ripple delete</strong>: remove e fecha os buracos; o vídeo fica mais curto.<br><strong>Cortar e apagar</strong>: remove e deixa os buracos.<br><strong>Somente cortar</strong>: só corta, sem apagar, para você revisar.</td>
+</tr>
+<tr>
+<td>Fade de áudio em cada corte<span class="d">Padrão: desligado · 66 ms</span></td>
+<td>Fade curto só no áudio para não dar estalo. O vídeo continua em corte seco. O valor é arredondado para frames inteiros.</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="analisar-e-aplicar">Analisar e aplicar</h2>
+<div class="doc-steps">
+<ol>
+<li>Clique em <span class="ui">Analisar áudio</span>. Na barra da prévia, <strong>azul fica e amarelo sai</strong>.</li>
+<li>Confira o número de silêncios, o tempo removido, a duração agora e a duração depois.</li>
+<li>Clique em <span class="ui">Aplicar cortes na timeline</span>.</li>
+</ol>
+</div>
+<h2 id="b-roll-e-lettering">B-roll e lettering</h2>
+<p>Uma trilha com espaço vazio embaixo de um silêncio pode impedir que o buraco seja fechado em todas as trilhas. Nesse caso o Buddy para a edição para manter tudo sincronizado e mostra quantos silêncios já tinham sido removidos. Volte pela cópia de segurança e rode o Silences antes de montar as trilhas de cima.</p>
+<div class="box tip">
+<p class="box-title">Clipes vinculados</p>
+<p>Se o Premiere não cortar clipes com áudio e vídeo vinculados, o Buddy desvincula sozinho, tenta de novo e avisa na mensagem de resultado.</p>
+</div>
+
+      </article>
+      <nav class="pager"><a class="pager-prev" href="podcast.html"><small>Anterior</small>Buddy Podcast</a><a class="pager-next" href="zoom.html"><small>Próximo</small>Buddy Zoom</a></nav>
+    </main>
+    <aside class="docs-toc" aria-label="Nesta página"><p>Nesta página</p><ul><li class="l2"><a href="#1-audio">1. Áudio</a></li><li class="l2"><a href="#2-regras">2. Regras</a></li><li class="l2"><a href="#analisar-e-aplicar">Analisar e aplicar</a></li><li class="l2"><a href="#b-roll-e-lettering">B-roll e lettering</a></li></ul></aside>
+  </div>
+  <script src="../js/site.js"></script>
+  <script src="assets/search-pt.js"></script>
+  <script src="assets/manual.js"></script>
+</body>
+</html>

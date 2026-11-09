@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Configurações e diagnóstico · Manual do Buddy Editor</title>
+  <meta name="description" content="A engrenagem no topo do painel abre as Configurações.">
+  <meta name="theme-color" content="#070b16">
+  <link rel="alternate" hreflang="pt-BR" href="settings.html">
+  <link rel="alternate" hreflang="en" href="en/settings.html">
+  <link rel="icon" type="image/svg+xml" href="../buddy_editor_camadas_editavel.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="assets/manual.css">
+</head>
+<body class="docs">
+  <div class="bg-deco" aria-hidden="true"></div>
+  <header class="nav">
+    <div class="wrap nav-inner">
+      <a class="brand" href="../index.html" aria-label="Buddy Editor">
+        <img src="../buddy_editor_camadas_editavel.svg" alt="" width="38" height="33">
+        <span class="brand-text">Buddy Editor<small>para Premiere Pro</small></span>
+      </a>
+      <nav aria-label="Principal">
+        <ul class="nav-links"><li><a href="../index.html">Início</a></li><li><a href="../funcionalidades.html">Funcionalidades</a></li><li><a href="../precos.html">Preços</a></li><li><a href="../atualizacoes.html">Atualizações</a></li><li><a href="index.html" aria-current="page">Manual</a></li></ul>
+      </nav>
+      <div class="nav-cta">
+        <a class="btn btn-primary btn-sm" href="../precos.html">Ver planos</a>
+        <button class="nav-toggle" aria-label="Menu" aria-expanded="false"><span></span></button>
+      </div>
+    </div>
+  </header>
+  <button class="docs-menu" type="button" aria-controls="docs-side" aria-expanded="false">Menu do manual</button>
+  <div class="docs-layout">
+    <aside class="docs-side" id="docs-side" aria-label="Menu do manual">
+      <a class="side-home" href="index.html">Manual do Buddy Editor<small>Versão 4.0.1</small></a>
+      <div class="search" data-search>
+        <input type="search" placeholder="Buscar no manual" aria-label="Buscar no manual" autocomplete="off" data-search-input>
+        <kbd>/</kbd>
+        <div class="search-results" data-search-results data-empty="Nada encontrado." hidden></div>
+      </div>
+      <nav><div class="side-group"><p class="side-title">Primeiros passos</p><ul><li><a href="introduction.html">O que é o Buddy Editor</a></li><li><a href="installation.html">Instalação</a></li><li><a href="activation.html">Ativação e licença</a></li><li><a href="panel.html">O painel</a></li><li><a href="updating.html">Atualizar e desinstalar</a></li></ul></div><div class="side-group"><p class="side-title">Como funciona</p><ul><li><a href="workflow.html">Analisar, conferir e aplicar</a></li></ul></div><div class="side-group"><p class="side-title">Módulos</p><ul><li><a href="podcast.html">Buddy Podcast</a></li><li><a href="silences.html">Buddy Silences</a></li><li><a href="zoom.html">Buddy Zoom</a></li><li><a href="angles.html">Buddy Angles</a></li></ul></div><div class="side-group"><p class="side-title">Referência</p><ul><li><a href="settings.html" aria-current="page">Configurações e diagnóstico</a><ul class="side-sub"><li><a href="#secoes">Seções</a></li><li><a href="#enviar-diagnostico">Enviar diagnóstico</a></li><li><a href="#pastas-do-buddy">Pastas do Buddy</a></li></ul></li><li><a href="troubleshooting.html">Solução de problemas</a></li><li><a href="versions.html">Histórico de versões</a></li></ul></div></nav>
+      <div class="side-foot">
+        <a class="side-pdf" href="pdf/Buddy-Editor-Manual-PT.pdf" download>Baixar o manual em PDF</a>
+        <p class="side-lang"><span class="lang-current">Português</span> · <a href="en/settings.html" hreflang="en">English</a></p>
+      </div>
+    </aside>
+    <main class="docs-main">
+      <article class="doc">
+<h1 id="configuracoes-e-diagnostico">Configurações e diagnóstico</h1>
+<p>A engrenagem no topo do painel abre as Configurações.</p>
+<h2 id="secoes">Seções</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Seção</th>
+<th>Para que serve</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Idioma</td>
+<td>Automático (segue o Premiere), Português ou English.</td>
+</tr>
+<tr>
+<td>Programas locais</td>
+<td>Mostra onde está o FFmpeg e permite escolher outro <code>ffmpeg.exe</code> com <span class="ui">Procurar</span>. Normalmente não é necessário.</td>
+</tr>
+<tr>
+<td>Ambiente</td>
+<td>Versão do Premiere, placa de vídeo detectada, pasta de dados e de logs, com o botão <span class="ui">Abrir no Explorer</span>.</td>
+</tr>
+<tr>
+<td>Licença</td>
+<td>Status, plano, chave, validade, <span class="ui">Verificar agora</span> e <span class="ui">Desativar este computador</span>.</td>
+</tr>
+<tr>
+<td>Atualizações</td>
+<td>Versão instalada e <span class="ui">Verificar atualizações</span>.</td>
+</tr>
+<tr>
+<td>Diagnóstico</td>
+<td>Testes técnicos (só use se o suporte pedir) e <span class="ui">Enviar diagnóstico</span>.</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="enviar-diagnostico">Enviar diagnóstico</h2>
+<p>Se algo der errado, envie o diagnóstico para o suporte:</p>
+<div class="doc-steps">
+<ol>
+<li>Clique em <span class="ui">Enviar diagnóstico</span> na faixa de erro ou em Configurações &gt; Diagnóstico.</li>
+<li>Escreva o que aconteceu. Se quiser, clique em <span class="ui">Ver o que será enviado</span>.</li>
+<li>Clique em <span class="ui">Enviar</span>. O Buddy mostra um código como <code>BR-7F3K9Q</code>: mande esse código para o suporte.</li>
+</ol>
+</div>
+<div class="box info">
+<p class="box-title">O que é enviado</p>
+<p>Nada é enviado sem o seu clique. Vão a versão do Buddy e do Premiere, o final da chave de licença, um identificador anônimo do computador e as últimas linhas do registro. O seu nome de usuário do Windows é removido dos caminhos.</p>
+</div>
+<h2 id="pastas-do-buddy">Pastas do Buddy</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Pasta</th>
+<th>Conteúdo</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>%LOCALAPPDATA%\BuddyEditor\bin</code></td>
+<td>FFmpeg.</td>
+</tr>
+<tr>
+<td><code>%LOCALAPPDATA%\BuddyEditor\config</code></td>
+<td>Licença e as configurações salvas de cada módulo.</td>
+</tr>
+<tr>
+<td><code>%LOCALAPPDATA%\BuddyEditor\logs</code></td>
+<td>Registro de diagnóstico (<code>buddy.log</code>).</td>
+</tr>
+</tbody>
+</table></div>
+
+      </article>
+      <nav class="pager"><a class="pager-prev" href="angles.html"><small>Anterior</small>Buddy Angles</a><a class="pager-next" href="troubleshooting.html"><small>Próximo</small>Solução de problemas</a></nav>
+    </main>
+    <aside class="docs-toc" aria-label="Nesta página"><p>Nesta página</p><ul><li class="l2"><a href="#secoes">Seções</a></li><li class="l2"><a href="#enviar-diagnostico">Enviar diagnóstico</a></li><li class="l2"><a href="#pastas-do-buddy">Pastas do Buddy</a></li></ul></aside>
+  </div>
+  <script src="../js/site.js"></script>
+  <script src="assets/search-pt.js"></script>
+  <script src="assets/manual.js"></script>
+</body>
+</html>

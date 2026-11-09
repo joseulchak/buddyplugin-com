@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Buddy Angles · Buddy Editor Manual</title>
+  <meta name="description" content="Buddy Angles is for videos of one person filmed with several cameras (wide, close-up, side…). It switches angles in random order, only at the pauses in the">
+  <meta name="theme-color" content="#070b16">
+  <link rel="alternate" hreflang="pt-BR" href="../angles.html">
+  <link rel="alternate" hreflang="en" href="angles.html">
+  <link rel="icon" type="image/svg+xml" href="../../buddy_editor_camadas_editavel.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../css/style.css">
+  <link rel="stylesheet" href="../assets/manual.css">
+</head>
+<body class="docs">
+  <div class="bg-deco" aria-hidden="true"></div>
+  <header class="nav">
+    <div class="wrap nav-inner">
+      <a class="brand" href="../../index.html" aria-label="Buddy Editor">
+        <img src="../../buddy_editor_camadas_editavel.svg" alt="" width="38" height="33">
+        <span class="brand-text">Buddy Editor<small>for Premiere Pro</small></span>
+      </a>
+      <nav aria-label="Principal">
+        <ul class="nav-links"><li><a href="../../index.html">Home</a></li><li><a href="../../funcionalidades.html">Features</a></li><li><a href="../../precos.html">Pricing</a></li><li><a href="../../atualizacoes.html">Updates</a></li><li><a href="../index.html" aria-current="page">Manual</a></li></ul>
+      </nav>
+      <div class="nav-cta">
+        <a class="btn btn-primary btn-sm" href="../../precos.html">See plans</a>
+        <button class="nav-toggle" aria-label="Menu" aria-expanded="false"><span></span></button>
+      </div>
+    </div>
+  </header>
+  <button class="docs-menu" type="button" aria-controls="docs-side" aria-expanded="false">Manual menu</button>
+  <div class="docs-layout">
+    <aside class="docs-side" id="docs-side" aria-label="Manual menu">
+      <a class="side-home" href="index.html">Buddy Editor Manual<small>Version 4.0.1</small></a>
+      <div class="search" data-search>
+        <input type="search" placeholder="Search the manual" aria-label="Search the manual" autocomplete="off" data-search-input>
+        <kbd>/</kbd>
+        <div class="search-results" data-search-results data-empty="No results." hidden></div>
+      </div>
+      <nav><div class="side-group"><p class="side-title">Getting started</p><ul><li><a href="introduction.html">What Buddy Editor is</a></li><li><a href="installation.html">Installation</a></li><li><a href="activation.html">Activation and license</a></li><li><a href="panel.html">The panel</a></li><li><a href="updating.html">Updating and uninstalling</a></li></ul></div><div class="side-group"><p class="side-title">How it works</p><ul><li><a href="workflow.html">Analyze, preview, apply</a></li></ul></div><div class="side-group"><p class="side-title">Modules</p><ul><li><a href="podcast.html">Buddy Podcast</a></li><li><a href="silences.html">Buddy Silences</a></li><li><a href="zoom.html">Buddy Zoom</a></li><li><a href="angles.html" aria-current="page">Buddy Angles</a><ul class="side-sub"><li><a href="#1-angles">1. Angles</a></li><li><a href="#2-rules">2. Rules</a></li><li><a href="#analyze-and-apply">Analyze and apply</a></li></ul></li></ul></div><div class="side-group"><p class="side-title">Reference</p><ul><li><a href="settings.html">Settings and diagnostics</a></li><li><a href="troubleshooting.html">Troubleshooting</a></li><li><a href="versions.html">Version history</a></li></ul></div></nav>
+      <div class="side-foot">
+        <a class="side-pdf" href="../pdf/Buddy-Editor-Manual-EN.pdf" download>Download the PDF manual</a>
+        <p class="side-lang"><a href="../angles.html" hreflang="pt-BR">Português</a> · <span class="lang-current">English</span></p>
+      </div>
+    </aside>
+    <main class="docs-main">
+      <article class="doc">
+<h1 id="buddy-angles">Buddy Angles</h1>
+<p>Buddy Angles is for videos of <strong>one person</strong> filmed with several cameras (wide, close-up, side…). It switches angles in random order, only at the pauses in the speech, so a word is never cut. The sequence duration does not change.</p>
+<h2 id="1-angles">1. Angles</h2>
+<ul>
+<li><span class="ui">Voice track</span>: the track with the person's audio. Buddy finds the pauses on it.</li>
+<li>Check the video tracks that are angles of the same person (at least two) and name each one. Without a name they become &quot;Angle 01&quot;, &quot;Angle 02&quot;…</li>
+<li><span class="ui">Main camera</span>: by default all angles are equal. If you pick a main camera, it comes back on air after every other angle and stays on screen longer.</li>
+<li><span class="ui">Fine tuning (advanced)</span> holds the channel, the <strong>Silence gate</strong> (auto-calibrated) and <strong>Gate above the noise</strong> (default 8 dB).</li>
+</ul>
+<h2 id="2-rules">2. Rules</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Option</th>
+<th>What it does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Micro pause<span class="d">Default: 0.12 s</span></td>
+<td>Shortest silence between words that can take a switch.</td>
+</tr>
+<tr>
+<td>End of sentence<span class="d">Default: 0.40 s</span></td>
+<td>Silences at least this long count as an end of sentence.</td>
+</tr>
+<tr>
+<td>Prefer the end of a sentence<span class="d">Default: on</span></td>
+<td>Uses an end of sentence first; a micro pause only when there is none.</td>
+</tr>
+<tr>
+<td>Minimum shot<span class="d">Default: 3.0 s</span></td>
+<td>No angle stays on air for less than this.</td>
+</tr>
+<tr>
+<td>Maximum shot<span class="d">Default: 10.0 s</span></td>
+<td>Switches at a pause near a random time in this range. Without a pause, it waits for the next one.</td>
+</tr>
+</tbody>
+</table></div>
+<p>The edit options are the same as in <a href="podcast.html#3-rules">Buddy Podcast</a>, with the same defaults: Edit mode, Camera layers, Where to cut, Unlink audio and video, Also cut the voice audio, Inactive cameras and Empty tracks after editing.</p>
+<h2 id="analyze-and-apply">Analyze and apply</h2>
+<div class="doc-steps">
+<ol>
+<li>Click <span class="ui">Analyze audio</span>. The preview shows each angle in its own color, the time of each, the ends of sentence and micro pauses found, and the average shot.</li>
+<li>Use <span class="ui">Generate another variation</span> to draw a new order and new shot lengths, always at pauses.</li>
+<li>Click <span class="ui">Apply cuts to timeline</span>.</li>
+</ol>
+</div>
+<div class="box tip">
+<p class="box-title">Switching in the middle of speech?</p>
+<p>Open <span class="ui">Fine tuning (advanced)</span> and lower the <strong>Silence gate</strong>. If no pauses are found, raise the gate or lower the micro pause.</p>
+</div>
+
+      </article>
+      <nav class="pager"><a class="pager-prev" href="zoom.html"><small>Previous</small>Buddy Zoom</a><a class="pager-next" href="settings.html"><small>Next</small>Settings and diagnostics</a></nav>
+    </main>
+    <aside class="docs-toc" aria-label="On this page"><p>On this page</p><ul><li class="l2"><a href="#1-angles">1. Angles</a></li><li class="l2"><a href="#2-rules">2. Rules</a></li><li class="l2"><a href="#analyze-and-apply">Analyze and apply</a></li></ul></aside>
+  </div>
+  <script src="../../js/site.js"></script>
+  <script src="../assets/search-en.js"></script>
+  <script src="../assets/manual.js"></script>
+</body>
+</html>

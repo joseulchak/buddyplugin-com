@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Buddy Angles · Manual do Buddy Editor</title>
+  <meta name="description" content="O Buddy Angles é para vídeos de uma pessoa filmada com várias câmeras (aberto, fechado, lateral…). Ele alterna os ângulos em ordem aleatória, só nas pausas">
+  <meta name="theme-color" content="#070b16">
+  <link rel="alternate" hreflang="pt-BR" href="angles.html">
+  <link rel="alternate" hreflang="en" href="en/angles.html">
+  <link rel="icon" type="image/svg+xml" href="../buddy_editor_camadas_editavel.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="assets/manual.css">
+</head>
+<body class="docs">
+  <div class="bg-deco" aria-hidden="true"></div>
+  <header class="nav">
+    <div class="wrap nav-inner">
+      <a class="brand" href="../index.html" aria-label="Buddy Editor">
+        <img src="../buddy_editor_camadas_editavel.svg" alt="" width="38" height="33">
+        <span class="brand-text">Buddy Editor<small>para Premiere Pro</small></span>
+      </a>
+      <nav aria-label="Principal">
+        <ul class="nav-links"><li><a href="../index.html">Início</a></li><li><a href="../funcionalidades.html">Funcionalidades</a></li><li><a href="../precos.html">Preços</a></li><li><a href="../atualizacoes.html">Atualizações</a></li><li><a href="index.html" aria-current="page">Manual</a></li></ul>
+      </nav>
+      <div class="nav-cta">
+        <a class="btn btn-primary btn-sm" href="../precos.html">Ver planos</a>
+        <button class="nav-toggle" aria-label="Menu" aria-expanded="false"><span></span></button>
+      </div>
+    </div>
+  </header>
+  <button class="docs-menu" type="button" aria-controls="docs-side" aria-expanded="false">Menu do manual</button>
+  <div class="docs-layout">
+    <aside class="docs-side" id="docs-side" aria-label="Menu do manual">
+      <a class="side-home" href="index.html">Manual do Buddy Editor<small>Versão 4.0.1</small></a>
+      <div class="search" data-search>
+        <input type="search" placeholder="Buscar no manual" aria-label="Buscar no manual" autocomplete="off" data-search-input>
+        <kbd>/</kbd>
+        <div class="search-results" data-search-results data-empty="Nada encontrado." hidden></div>
+      </div>
+      <nav><div class="side-group"><p class="side-title">Primeiros passos</p><ul><li><a href="introduction.html">O que é o Buddy Editor</a></li><li><a href="installation.html">Instalação</a></li><li><a href="activation.html">Ativação e licença</a></li><li><a href="panel.html">O painel</a></li><li><a href="updating.html">Atualizar e desinstalar</a></li></ul></div><div class="side-group"><p class="side-title">Como funciona</p><ul><li><a href="workflow.html">Analisar, conferir e aplicar</a></li></ul></div><div class="side-group"><p class="side-title">Módulos</p><ul><li><a href="podcast.html">Buddy Podcast</a></li><li><a href="silences.html">Buddy Silences</a></li><li><a href="zoom.html">Buddy Zoom</a></li><li><a href="angles.html" aria-current="page">Buddy Angles</a><ul class="side-sub"><li><a href="#1-angulos">1. Ângulos</a></li><li><a href="#2-regras">2. Regras</a></li><li><a href="#analisar-e-aplicar">Analisar e aplicar</a></li></ul></li></ul></div><div class="side-group"><p class="side-title">Referência</p><ul><li><a href="settings.html">Configurações e diagnóstico</a></li><li><a href="troubleshooting.html">Solução de problemas</a></li><li><a href="versions.html">Histórico de versões</a></li></ul></div></nav>
+      <div class="side-foot">
+        <a class="side-pdf" href="pdf/Buddy-Editor-Manual-PT.pdf" download>Baixar o manual em PDF</a>
+        <p class="side-lang"><span class="lang-current">Português</span> · <a href="en/angles.html" hreflang="en">English</a></p>
+      </div>
+    </aside>
+    <main class="docs-main">
+      <article class="doc">
+<h1 id="buddy-angles">Buddy Angles</h1>
+<p>O Buddy Angles é para vídeos de <strong>uma pessoa</strong> filmada com várias câmeras (aberto, fechado, lateral…). Ele alterna os ângulos em ordem aleatória, só nas pausas da fala, para nunca cortar uma palavra. A duração da sequência não muda.</p>
+<h2 id="1-angulos">1. Ângulos</h2>
+<ul>
+<li><span class="ui">Trilha da voz</span>: a trilha com o áudio da pessoa. O Buddy encontra as pausas nela.</li>
+<li>Marque as trilhas de vídeo que são ângulos da mesma pessoa (pelo menos duas) e dê um nome a cada uma. Sem nome, elas viram &quot;Ângulo 01&quot;, &quot;Ângulo 02&quot;…</li>
+<li><span class="ui">Câmera principal</span>: por padrão todos os ângulos são iguais. Se escolher uma principal, ela volta ao ar depois de cada outro ângulo e fica mais tempo na tela.</li>
+<li>Em <span class="ui">Ajuste fino (avançado)</span> ficam o canal, o <strong>Limite de silêncio</strong> (calibrado sozinho) e o <strong>Limite acima do ruído</strong> (padrão 8 dB).</li>
+</ul>
+<h2 id="2-regras">2. Regras</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Opção</th>
+<th>O que faz</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Micro pausa<span class="d">Padrão: 0,12 s</span></td>
+<td>Menor silêncio entre palavras que pode receber uma troca.</td>
+</tr>
+<tr>
+<td>Fim de frase<span class="d">Padrão: 0,40 s</span></td>
+<td>Silêncios a partir desse tamanho contam como fim de frase.</td>
+</tr>
+<tr>
+<td>Preferir fim de frase<span class="d">Padrão: ligado</span></td>
+<td>Usa primeiro um fim de frase; micro pausa só quando não houver.</td>
+</tr>
+<tr>
+<td>Plano mínimo<span class="d">Padrão: 3,0 s</span></td>
+<td>Nenhum ângulo fica menos que isso no ar.</td>
+</tr>
+<tr>
+<td>Plano máximo<span class="d">Padrão: 10,0 s</span></td>
+<td>Troca numa pausa perto de um tempo sorteado nesse intervalo. Sem pausa, espera a próxima.</td>
+</tr>
+</tbody>
+</table></div>
+<p>As opções de edição são as mesmas do <a href="podcast.html#3-regras">Buddy Podcast</a>, com os mesmos padrões: Modo de edição, Camadas das câmeras, Onde cortar, Desvincular áudio e vídeo, Cortar também o áudio da voz, Câmeras inativas e Trilhas vazias após editar.</p>
+<h2 id="analisar-e-aplicar">Analisar e aplicar</h2>
+<div class="doc-steps">
+<ol>
+<li>Clique em <span class="ui">Analisar áudio</span>. A prévia mostra cada ângulo com uma cor, o tempo de cada um, os fins de frase e micro pausas encontrados e o plano médio.</li>
+<li>Use <span class="ui">Gerar outra variação</span> para sortear uma nova ordem e novos tempos, sempre nas pausas.</li>
+<li>Clique em <span class="ui">Aplicar cortes na timeline</span>.</li>
+</ol>
+</div>
+<div class="box tip">
+<p class="box-title">Troca no meio da fala?</p>
+<p>Abra o <span class="ui">Ajuste fino (avançado)</span> e baixe o <strong>Limite de silêncio</strong>. Se nenhuma pausa for encontrada, aumente o limite ou diminua a micro pausa.</p>
+</div>
+
+      </article>
+      <nav class="pager"><a class="pager-prev" href="zoom.html"><small>Anterior</small>Buddy Zoom</a><a class="pager-next" href="settings.html"><small>Próximo</small>Configurações e diagnóstico</a></nav>
+    </main>
+    <aside class="docs-toc" aria-label="Nesta página"><p>Nesta página</p><ul><li class="l2"><a href="#1-angulos">1. Ângulos</a></li><li class="l2"><a href="#2-regras">2. Regras</a></li><li class="l2"><a href="#analisar-e-aplicar">Analisar e aplicar</a></li></ul></aside>
+  </div>
+  <script src="../js/site.js"></script>
+  <script src="assets/search-pt.js"></script>
+  <script src="assets/manual.js"></script>
+</body>
+</html>
